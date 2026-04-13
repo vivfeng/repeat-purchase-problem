@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Truemed — The Repeat Purchase Problem</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.1.0/dist/chartjs-plugin-annotation.min.js"></script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Epilogue:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
 
@@ -523,6 +525,162 @@
   footer p { font-family: var(--font-display); font-size: 11px; color: var(--white-50); letter-spacing: 0.5px; }
   footer a { color: var(--neon); text-decoration: none; }
 
+  /* ═══════ RETENTION FUNNEL ═══════ */
+  .funnel { margin-bottom: 48px; }
+  .funnel-step { display: flex; align-items: center; gap: 0; margin-bottom: 6px; position: relative; }
+  .funnel-bar-wrap { flex: 1; position: relative; }
+  .funnel-bar {
+    height: 56px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: space-between; padding: 0 20px;
+    transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 0 !important;
+  }
+  .funnel-bar.go { width: var(--fw) !important; }
+  .funnel-bar .fb-val { font-family: var(--font-display); font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+  .funnel-bar .fb-lbl { font-size: 13px; font-weight: 400; opacity: 0.85; }
+  .funnel-bar.f1 { background: linear-gradient(90deg, rgba(185,245,66,0.35), rgba(185,245,66,0.08)); }
+  .funnel-bar.f1 .fb-val { color: var(--neon); }
+  .funnel-bar.f2 { background: linear-gradient(90deg, rgba(245,212,66,0.30), rgba(245,212,66,0.06)); }
+  .funnel-bar.f2 .fb-val { color: var(--yellow); }
+  .funnel-bar.f3 { background: linear-gradient(90deg, rgba(98,212,255,0.30), rgba(98,212,255,0.06)); }
+  .funnel-bar.f3 .fb-val { color: var(--sky); }
+  .funnel-bar.f4 { background: linear-gradient(90deg, rgba(255,122,98,0.30), rgba(255,122,98,0.06)); }
+  .funnel-bar.f4 .fb-val { color: var(--coral); }
+  .funnel-drop {
+    position: absolute; right: -80px; top: 50%; transform: translateY(-50%);
+    font-family: var(--font-display); font-size: 11px; font-weight: 700; color: var(--coral);
+    opacity: 0.7; white-space: nowrap;
+  }
+
+  /* ═══════ CHART CONTAINERS ═══════ */
+  .chart-wrap {
+    background: rgba(22,53,60,0.42); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 28px; margin-bottom: 48px; backdrop-filter: blur(12px); position: relative;
+  }
+  .chart-wrap canvas { max-height: 360px; }
+  .chart-title {
+    font-family: var(--font-display); font-size: 11px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--white-50); margin-bottom: 20px;
+  }
+  .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 48px; }
+  @media (max-width: 768px) { .chart-row { grid-template-columns: 1fr; } }
+
+  /* ═══════ BUTTERFLY CHART ═══════ */
+  .butterfly { margin-bottom: 48px; }
+  .bf-row { display: grid; grid-template-columns: 1fr 200px 1fr; align-items: center; gap: 0; margin-bottom: 8px; }
+  .bf-row.bf-header { margin-bottom: 16px; }
+  .bf-row.bf-header span {
+    font-family: var(--font-display); font-size: 10px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--white-50);
+  }
+  .bf-left { display: flex; justify-content: flex-end; align-items: center; gap: 10px; }
+  .bf-right { display: flex; justify-content: flex-start; align-items: center; gap: 10px; }
+  .bf-center { text-align: center; font-size: 12px; color: var(--white-50); font-weight: 400; padding: 0 12px; }
+  .bf-bar {
+    height: 32px; border-radius: 6px; display: flex; align-items: center; padding: 0 12px;
+    font-family: var(--font-display); font-size: 13px; font-weight: 700;
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1); width: 0 !important;
+    min-width: 0;
+  }
+  .bf-bar.go { width: var(--bfw) !important; min-width: 42px; }
+  .bf-bar.coral-bar { background: linear-gradient(270deg, rgba(255,122,98,0.35), rgba(255,122,98,0.08)); color: var(--coral); justify-content: flex-start; }
+  .bf-bar.neon-bar { background: linear-gradient(90deg, rgba(185,245,66,0.35), rgba(185,245,66,0.08)); color: var(--neon); justify-content: flex-end; }
+
+  /* ═══════ CATEGORY SHIFT ═══════ */
+  .shift-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 48px; }
+  .shift-card {
+    background: rgba(22,53,60,0.42); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 20px; text-align: center; transition: transform .3s, border-color .3s;
+  }
+  .shift-card:hover { transform: translateY(-3px); border-color: var(--white-20); }
+  .shift-card .sc-cat { font-size: 12px; color: var(--white-50); margin-bottom: 12px; font-weight: 400; }
+  .shift-card .sc-delta {
+    font-family: var(--font-display); font-size: 32px; font-weight: 800; letter-spacing: -1px; margin-bottom: 4px;
+  }
+  .shift-card .sc-delta.up { color: var(--neon); }
+  .shift-card .sc-delta.down { color: var(--coral); }
+  .shift-card .sc-delta.flat { color: var(--white-50); }
+  .shift-card .sc-range { font-size: 11px; color: var(--white-50); font-weight: 300; }
+
+  /* ═══════ LTV COMPARISON ═══════ */
+  .ltv-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 48px; align-items: end; }
+  .ltv-col { text-align: center; }
+  .ltv-bar-outer {
+    background: rgba(238,243,239,0.04); border-radius: var(--radius-sm);
+    height: 240px; position: relative; display: flex; align-items: flex-end; justify-content: center;
+    margin-bottom: 12px; overflow: hidden;
+  }
+  .ltv-bar-inner {
+    width: 80%; border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    transition: height 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    height: 0; display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 20px; font-weight: 800;
+  }
+  .ltv-bar-inner.go { height: var(--lh); }
+  .ltv-bar-inner.durable { background: linear-gradient(0deg, rgba(255,122,98,0.30), rgba(255,122,98,0.10)); color: var(--coral); }
+  .ltv-bar-inner.consumable { background: linear-gradient(0deg, rgba(185,245,66,0.35), rgba(185,245,66,0.10)); color: var(--neon); }
+  .ltv-label { font-size: 13px; color: var(--white-50); font-weight: 400; }
+  .ltv-label strong { color: var(--white-80); font-weight: 600; }
+  .ltv-sub { font-size: 11px; color: var(--white-50); margin-top: 4px; font-weight: 300; }
+
+  /* ═══════ FLOW DIAGRAM ═══════ */
+  .flow-diagram {
+    display: flex; align-items: center; justify-content: center; gap: 0;
+    margin-bottom: 48px; flex-wrap: wrap; padding: 32px 0;
+  }
+  .flow-node {
+    background: rgba(22,53,60,0.6); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 16px 20px; text-align: center; min-width: 140px;
+    transition: border-color .3s, transform .3s;
+  }
+  .flow-node:hover { border-color: var(--neon); transform: translateY(-3px); }
+  .flow-node .fn-letter {
+    font-family: var(--font-display); font-size: 28px; font-weight: 800;
+    background: linear-gradient(135deg, var(--neon), var(--yellow));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    margin-bottom: 4px;
+  }
+  .flow-node .fn-name { font-family: var(--font-display); font-size: 11px; font-weight: 600; letter-spacing: 1px; }
+  .flow-node .fn-rc { font-size: 10px; color: var(--white-50); margin-top: 4px; }
+  .flow-arrow {
+    font-size: 24px; color: var(--neon); opacity: 0.5; padding: 0 12px;
+    font-family: var(--font-display); font-weight: 300;
+  }
+  .flow-parallel {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+  }
+  .flow-parallel-label {
+    font-family: var(--font-display); font-size: 9px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--white-50);
+  }
+
+  /* ═══════ EXPERIMENT INFOGRAPHIC ═══════ */
+  .exp-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 48px; }
+  .exp-card {
+    background: rgba(22,53,60,0.42); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 20px; text-align: center;
+  }
+  .exp-card .ec-v { font-family: var(--font-display); font-size: 28px; font-weight: 800; margin-bottom: 4px; letter-spacing: -1px; }
+  .exp-card .ec-l { font-size: 11px; color: var(--white-50); line-height: 1.5; }
+
+  /* ═══════ CHANNEL DUAL CHART ═══════ */
+  .channel-dual { margin-bottom: 48px; }
+  .ch-row { display: grid; grid-template-columns: 130px 1fr 60px 1fr 60px; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .ch-row.ch-header { margin-bottom: 12px; }
+  .ch-row.ch-header span { font-family: var(--font-display); font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--white-50); }
+  .ch-lbl { font-size: 12px; color: var(--white-80); text-align: right; font-weight: 400; }
+  .ch-bar-track { height: 28px; background: rgba(238,243,239,0.04); border-radius: 6px; overflow: hidden; }
+  .ch-bar-fill {
+    height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 10px;
+    font-family: var(--font-display); font-size: 11px; font-weight: 700;
+    width: 0 !important; transition: width 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .ch-bar-fill.go { width: var(--chw) !important; }
+  .ch-bar-fill.share-bar { background: linear-gradient(90deg, rgba(98,212,255,0.30), rgba(98,212,255,0.06)); color: var(--sky); }
+  .ch-bar-fill.repeat-bar { background: linear-gradient(90deg, rgba(185,245,66,0.30), rgba(185,245,66,0.06)); color: var(--neon); }
+  .ch-val { font-family: var(--font-display); font-size: 13px; font-weight: 700; text-align: left; }
+  .ch-val.sky-c { color: var(--sky); }
+  .ch-val.neon-c { color: var(--neon); }
+
   /* ═══════ FADE IN ═══════ */
   .fi { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
   .fi.vis { opacity: 1; transform: translateY(0); }
@@ -613,7 +771,7 @@
     </div>
   </div>
 </div>
-<p class="part-desc fi">Real Truemed marketplace data — cohort metrics, category behavior, channel retention, engagement signals, and user interviews.</p>
+<p class="part-desc fi">Synthetic data modeled on real Truemed patterns — cohort metrics, category behavior, channel retention, engagement signals, and user interviews.</p>
 
 <!-- Cohort Overview -->
 <section>
@@ -625,6 +783,26 @@
     <div class="glass-card"><div class="gc-v" style="color:var(--coral)">35.7K</div><div class="gc-l">Users with exactly<br>1 purchase (85%)</div></div>
     <div class="glass-card"><div class="gc-v" style="color:var(--yellow)">$187</div><div class="gc-l">Average order value</div></div>
     <div class="glass-card"><div class="gc-v" style="color:var(--sky)">68 days</div><div class="gc-l">Median time to<br>2nd purchase</div></div>
+  </div>
+
+  <div class="sub-label fi"><span class="dot"></span> The Drop-Off</div>
+  <h2 class="section-heading fi" style="font-size:clamp(22px,2.5vw,32px)">Where the funnel breaks</h2>
+  <p class="section-desc fi">Of 42,000 purchasers, only 6,300 ever came back. The cliff from first to second purchase is where nearly all value leaks out.</p>
+  <div class="funnel fi" id="retentionFunnel">
+    <div class="funnel-step">
+      <div class="funnel-bar-wrap"><div class="funnel-bar f1" style="--fw:100%"><span class="fb-val">42,000</span><span class="fb-lbl">Total purchasers</span></div></div>
+    </div>
+    <div class="funnel-step">
+      <div class="funnel-bar-wrap"><div class="funnel-bar f2" style="--fw:85%"><span class="fb-val">35,700</span><span class="fb-lbl">1 purchase only (85%)</span></div></div>
+      <div class="funnel-drop">-85% stop here</div>
+    </div>
+    <div class="funnel-step">
+      <div class="funnel-bar-wrap"><div class="funnel-bar f3" style="--fw:15%"><span class="fb-val">4,200</span><span class="fb-lbl">2 purchases (10%)</span></div></div>
+    </div>
+    <div class="funnel-step">
+      <div class="funnel-bar-wrap"><div class="funnel-bar f4" style="--fw:7.5%"><span class="fb-val">2,100</span><span class="fb-lbl">3+ purchases (5%)</span></div></div>
+      <div class="funnel-drop">Only 15% repeat</div>
+    </div>
   </div>
 </section>
 
@@ -648,6 +826,23 @@
       </tbody>
     </table>
   </div>
+
+  <div class="sub-label fi"><span class="dot"></span> The Migration Pattern</div>
+  <h2 class="section-heading fi" style="font-size:clamp(22px,2.5vw,32px)">How category share shifts from 1st to 2nd purchase</h2>
+  <p class="section-desc fi">When users do come back, they migrate toward consumables. Supplements surge +19 points while Exercise equipment drops 16. The demand for breadth exists — most users just never discover it.</p>
+  <div class="shift-grid fi">
+    <div class="shift-card"><div class="sc-cat">Supplements & Nutrition</div><div class="sc-delta up">+19 pts</div><div class="sc-range">22% → 41%</div></div>
+    <div class="shift-card"><div class="sc-cat">Food & Groceries</div><div class="sc-delta up">+8 pts</div><div class="sc-range">11% → 19%</div></div>
+    <div class="shift-card"><div class="sc-cat">Stress & Wellness</div><div class="sc-delta flat">0 pts</div><div class="sc-range">4% → 4%</div></div>
+    <div class="shift-card"><div class="sc-cat">Sleep & Recovery</div><div class="sc-delta down">-6 pts</div><div class="sc-range">18% → 12%</div></div>
+    <div class="shift-card"><div class="sc-cat">Light Therapy</div><div class="sc-delta down">-4 pts</div><div class="sc-range">8% → 4%</div></div>
+    <div class="shift-card"><div class="sc-cat">Exercise & Fitness</div><div class="sc-delta down">-16 pts</div><div class="sc-range">34% → 18%</div></div>
+  </div>
+
+  <div class="chart-wrap fi">
+    <div class="chart-title">1st vs 2nd Purchase Category Share</div>
+    <canvas id="categoryChart" height="280"></canvas>
+  </div>
 </section>
 
 <hr class="divider">
@@ -657,13 +852,51 @@
   <div class="sub-label fi"><span class="dot"></span> Acquisition Channels</div>
   <h2 class="section-heading fi">How you arrive determines if you stay</h2>
   <p class="section-desc fi">61% of users arrive via merchant checkout — and almost none come back. Referrals and lifecycle re-engagement have 3–4x the repeat rate.</p>
-  <div class="bars fi">
-    <div class="bar-row"><div class="bar-lbl">Email / Lifecycle</div><div class="bar-track"><div class="bar-fill neon" style="--target-w:38%">38%</div></div></div>
-    <div class="bar-row"><div class="bar-lbl">Referral</div><div class="bar-track"><div class="bar-fill neon" style="--target-w:31%">31%</div></div></div>
-    <div class="bar-row"><div class="bar-lbl">Direct / SEO</div><div class="bar-track"><div class="bar-fill sky" style="--target-w:22%">22%</div></div></div>
-    <div class="bar-row"><div class="bar-lbl">Paid</div><div class="bar-track"><div class="bar-fill sky" style="--target-w:11%">11%</div></div></div>
-    <div class="bar-row"><div class="bar-lbl">Merchant Checkout</div><div class="bar-track"><div class="bar-fill coral" style="--target-w:9%">9%</div></div></div>
+  <div class="channel-dual fi" id="channelDual">
+    <div class="ch-row ch-header">
+      <span></span>
+      <span style="text-align:center">% of Users</span>
+      <span></span>
+      <span style="text-align:center">Repeat Rate</span>
+      <span></span>
+    </div>
+    <div class="ch-row">
+      <div class="ch-lbl">Merchant Checkout</div>
+      <div class="ch-bar-track"><div class="ch-bar-fill share-bar" style="--chw:100%">61%</div></div>
+      <div class="ch-val sky-c">61%</div>
+      <div class="ch-bar-track"><div class="ch-bar-fill repeat-bar" style="--chw:24%">9%</div></div>
+      <div class="ch-val neon-c">9%</div>
+    </div>
+    <div class="ch-row">
+      <div class="ch-lbl">Direct / SEO</div>
+      <div class="ch-bar-track"><div class="ch-bar-fill share-bar" style="--chw:30%">18%</div></div>
+      <div class="ch-val sky-c">18%</div>
+      <div class="ch-bar-track"><div class="ch-bar-fill repeat-bar" style="--chw:58%">22%</div></div>
+      <div class="ch-val neon-c">22%</div>
+    </div>
+    <div class="ch-row">
+      <div class="ch-lbl">Paid</div>
+      <div class="ch-bar-track"><div class="ch-bar-fill share-bar" style="--chw:20%">12%</div></div>
+      <div class="ch-val sky-c">12%</div>
+      <div class="ch-bar-track"><div class="ch-bar-fill repeat-bar" style="--chw:29%">11%</div></div>
+      <div class="ch-val neon-c">11%</div>
+    </div>
+    <div class="ch-row">
+      <div class="ch-lbl">Referral</div>
+      <div class="ch-bar-track"><div class="ch-bar-fill share-bar" style="--chw:8%">5%</div></div>
+      <div class="ch-val sky-c">5%</div>
+      <div class="ch-bar-track"><div class="ch-bar-fill repeat-bar" style="--chw:82%">31%</div></div>
+      <div class="ch-val neon-c">31%</div>
+    </div>
+    <div class="ch-row">
+      <div class="ch-lbl">Email / Lifecycle</div>
+      <div class="ch-bar-track"><div class="ch-bar-fill share-bar" style="--chw:7%">4%</div></div>
+      <div class="ch-val sky-c">4%</div>
+      <div class="ch-bar-track"><div class="ch-bar-fill repeat-bar" style="--chw:100%">38%</div></div>
+      <div class="ch-val neon-c">38%</div>
+    </div>
   </div>
+  <p class="section-desc fi" style="margin-top:-24px;font-size:13px;max-width:540px;color:var(--white-50)">The paradox: the biggest channel (merchant checkout, 61% of users) has the worst repeat rate (9%). The smallest channels (referral, email) repeat 3-4x better.</p>
 </section>
 
 <hr class="divider">
@@ -673,22 +906,55 @@
   <div class="sub-label fi"><span class="dot"></span> Engagement Signals</div>
   <h2 class="section-heading fi">Two entirely different relationships</h2>
   <p class="section-desc fi">Every engagement signal shows a dramatic split. Repeat buyers aren't just more engaged — they're in a fundamentally different relationship with the platform.</p>
-  <div class="compare fi">
-    <div class="cmp-panel ot">
-      <h4><span class="dot"></span> One-Time Buyers</h4>
-      <div class="cmp-row"><span class="cl">Opened post-purchase email</span><span class="cv">34%</span></div>
-      <div class="cmp-row"><span class="cl">Returned within 30 days</span><span class="cv">12%</span></div>
-      <div class="cmp-row"><span class="cl">Browsed 2+ categories</span><span class="cv">8%</span></div>
-      <div class="cmp-row"><span class="cl">Clicked recommendation</span><span class="cv">6%</span></div>
-      <div class="cmp-row"><span class="cl">Filed reimbursement claim</span><span class="cv">18%</span></div>
+  <div class="butterfly fi" id="butterflyChart">
+    <div class="bf-row bf-header">
+      <span style="text-align:right;color:var(--coral)">One-Time Buyers</span>
+      <span style="text-align:center">Signal</span>
+      <span style="color:var(--neon)">Repeat Buyers</span>
     </div>
-    <div class="cmp-panel rp">
-      <h4><span class="dot"></span> Repeat Buyers</h4>
-      <div class="cmp-row"><span class="cl">Opened post-purchase email</span><span class="cv">71%</span></div>
-      <div class="cmp-row"><span class="cl">Returned within 30 days</span><span class="cv">54%</span></div>
-      <div class="cmp-row"><span class="cl">Browsed 2+ categories</span><span class="cv">47%</span></div>
-      <div class="cmp-row"><span class="cl">Clicked recommendation</span><span class="cv">39%</span></div>
-      <div class="cmp-row"><span class="cl">Filed reimbursement claim</span><span class="cv">52%</span></div>
+    <div class="bf-row">
+      <div class="bf-left"><div class="bf-bar coral-bar" style="--bfw:48%">34%</div></div>
+      <div class="bf-center">Opened email</div>
+      <div class="bf-right"><div class="bf-bar neon-bar" style="--bfw:100%">71%</div></div>
+    </div>
+    <div class="bf-row">
+      <div class="bf-left"><div class="bf-bar coral-bar" style="--bfw:22%">12%</div></div>
+      <div class="bf-center">Returned in 30d</div>
+      <div class="bf-right"><div class="bf-bar neon-bar" style="--bfw:76%">54%</div></div>
+    </div>
+    <div class="bf-row">
+      <div class="bf-left"><div class="bf-bar coral-bar" style="--bfw:11%">8%</div></div>
+      <div class="bf-center">Browsed 2+ cats</div>
+      <div class="bf-right"><div class="bf-bar neon-bar" style="--bfw:66%">47%</div></div>
+    </div>
+    <div class="bf-row">
+      <div class="bf-left"><div class="bf-bar coral-bar" style="--bfw:8%">6%</div></div>
+      <div class="bf-center">Clicked rec</div>
+      <div class="bf-right"><div class="bf-bar neon-bar" style="--bfw:55%">39%</div></div>
+    </div>
+    <div class="bf-row">
+      <div class="bf-left"><div class="bf-bar coral-bar" style="--bfw:25%">18%</div></div>
+      <div class="bf-center">Filed claim</div>
+      <div class="bf-right"><div class="bf-bar neon-bar" style="--bfw:73%">52%</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- Time Between Purchases & Cross-Category -->
+<section>
+  <div class="sub-label fi"><span class="dot"></span> Purchase Timing & Behavior</div>
+  <h2 class="section-heading fi">When and how repeat buyers come back</h2>
+  <p class="section-desc fi">The median second purchase takes 68 days. Most repeat buyers cross into a different category — 58% buy from a new category on their second order.</p>
+  <div class="chart-row fi">
+    <div class="chart-wrap" style="margin-bottom:0">
+      <div class="chart-title">Time to Second Purchase</div>
+      <canvas id="timeChart" height="260"></canvas>
+    </div>
+    <div class="chart-wrap" style="margin-bottom:0">
+      <div class="chart-title">Cross-Category Behavior (2nd Purchase)</div>
+      <canvas id="crossCatChart" height="260"></canvas>
     </div>
   </div>
 </section>
@@ -781,6 +1047,33 @@
 </div>
 <p class="part-desc fi">Each intervention attacks a different root cause. A is table stakes — without awareness, B and C don't get traffic. B is the flywheel bet that compounds over time. C depends on A for traffic but converts the most motivated users.</p>
 
+<section style="padding-top:32px;padding-bottom:0">
+  <div class="sub-label fi"><span class="dot"></span> Dependency Map</div>
+  <div class="flow-diagram fi">
+    <div class="flow-node">
+      <div class="fn-letter">A</div>
+      <div class="fn-name">Discovery System</div>
+      <div class="fn-rc">Attacks RC1 · Awareness</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">
+      <div class="fn-letter">C</div>
+      <div class="fn-name">Benefits Dashboard</div>
+      <div class="fn-rc">Attacks RC3 · Depends on A</div>
+    </div>
+    <div style="width:100%;display:flex;justify-content:center;margin-top:16px">
+      <div class="flow-parallel">
+        <div class="flow-parallel-label">Ships in parallel</div>
+        <div class="flow-node">
+          <div class="fn-letter">B</div>
+          <div class="fn-name">Consumable Reorder</div>
+          <div class="fn-rc">Attacks RC2 · Flywheel</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="int-block fi">
     <div class="int-header">
@@ -807,6 +1100,25 @@
       <div class="int-cell"><div class="ic-l">Primary Metric</div><p>Consumable reorder rate through Truemed within 90 days (current baseline ~15–26% depending on category).</p></div>
       <div class="int-cell"><div class="ic-l">The Flywheel</div><p>More merchants → richer catalog → more users → stronger pitch to next merchant → supply grows. Each signed merchant makes the next one easier to close.</p></div>
       <div class="int-cell"><div class="ic-l">LTV Math</div><p>Supplements: $74 AOV × 3 purchases = $222 LTV, approaching Exercise equipment's $312 one-time. At scale, consumables become the LTV engine of the business.</p></div>
+    </div>
+
+    <div class="sub-label fi" style="margin-top:36px"><span class="dot"></span> LTV Crossover</div>
+    <p class="section-desc fi" style="margin-bottom:28px">A supplement subscriber overtakes a one-time equipment buyer by purchase #5. Consumables become the LTV engine.</p>
+    <div class="ltv-compare fi" id="ltvCompare">
+      <div class="ltv-col">
+        <div class="ltv-bar-outer">
+          <div class="ltv-bar-inner durable" style="--lh:65%">$312</div>
+        </div>
+        <div class="ltv-label"><strong>Exercise Equipment</strong></div>
+        <div class="ltv-sub">1 purchase × $312 AOV</div>
+      </div>
+      <div class="ltv-col">
+        <div class="ltv-bar-outer">
+          <div class="ltv-bar-inner consumable" style="--lh:47%">$222</div>
+        </div>
+        <div class="ltv-label"><strong>Supplements</strong> (3 orders)</div>
+        <div class="ltv-sub">3 × $74 = $222 &nbsp;→&nbsp; 5× = <span style="color:var(--neon);font-weight:600">$370</span></div>
+      </div>
     </div>
   </div>
 
@@ -839,6 +1151,18 @@
   </div>
 </div>
 <p class="part-desc fi">Testing Intervention B — the consumable reorder flywheel. Starting with the cheapest possible version: a single email. The goal is to validate the savings-math framing before building subscription infrastructure.</p>
+
+<section style="padding-top:32px;padding-bottom:0">
+  <div class="sub-label fi"><span class="dot"></span> Experiment at a Glance</div>
+  <div class="exp-info fi">
+    <div class="exp-card"><div class="ec-v" style="color:var(--neon)">1,660</div><div class="ec-l">Eligible users<br>(lapsed consumable buyers)</div></div>
+    <div class="exp-card"><div class="ec-v" style="color:var(--sky)">80/20</div><div class="ec-l">Treatment / Holdout<br>(1,330 vs 330)</div></div>
+    <div class="exp-card"><div class="ec-v" style="color:var(--yellow)">~15%</div><div class="ec-l">Baseline reorder rate<br>(filtered cohort)</div></div>
+    <div class="exp-card"><div class="ec-v" style="color:var(--coral)">7 pts</div><div class="ec-l">Min detectable effect<br>(15% → 22%, 80% power)</div></div>
+    <div class="exp-card"><div class="ec-v" style="color:var(--white-80)">60d</div><div class="ec-l">Observation window<br>(grocery: 3-4 wk, supps: 4-8 wk)</div></div>
+    <div class="exp-card"><div class="ec-v" style="color:var(--coral)">&lt;5 pts</div><div class="ec-l">Kill threshold<br>(lift OR &lt;5% email CTR)</div></div>
+  </div>
+</section>
 
 <section>
   <div class="timeline fi">
