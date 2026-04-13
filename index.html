@@ -501,6 +501,16 @@
     color: var(--white-50); margin-bottom: 10px;
   }
   .int-cell p { font-size: 13px; line-height: 1.7; color: var(--white-80); font-weight: 400; }
+  .int-cell.full-width { grid-column: 1 / -1; }
+  .int-cell .behavior-shift { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; font-size: 13px; line-height: 1.7; color: var(--white-80); }
+  .int-cell .behavior-shift .bs-from { opacity: 0.6; }
+  .int-cell .behavior-shift .bs-arrow { color: var(--teal-deep); font-weight: 700; flex-shrink: 0; }
+  .int-cell .behavior-shift .bs-to { font-weight: 500; color: var(--ink); }
+  .tradeoff-block { margin-top: 16px; border: 1px solid rgba(217,83,79,0.15); border-radius: var(--radius-sm); padding: 20px; background: rgba(217,83,79,0.02); }
+  .tradeoff-block .tradeoff-label { font-family: var(--font-display); font-size: 9px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--coral); margin-bottom: 14px; }
+  .tradeoff-block .tradeoff-item { font-size: 13px; line-height: 1.7; color: var(--white-80); margin-bottom: 10px; }
+  .tradeoff-block .tradeoff-item:last-child { margin-bottom: 0; }
+  .tradeoff-block .tradeoff-item strong { color: var(--ink); font-weight: 600; }
 
   /* ═══════ TIMELINE ═══════ */
   .timeline { position: relative; padding-left: 52px; margin-bottom: 48px; }
@@ -1135,7 +1145,7 @@
   <div class="hero-left">
     <div class="hero-label"><span class="pill">Truemed Marketplace</span></div>
     <h1>They buy once.<br><span class="hl">Then vanish.</span></h1>
-    <p class="hero-sub">42,000 users discovered Truemed last year. Only 15% came back for a second purchase. This analysis unpacks why — and what to build next.</p>
+    <p class="hero-sub">42,000 users discovered Truemed last year. Only 15% came back for a second purchase. This analysis unpacks why, and what to build next.</p>
   </div>
   <div class="hero-right">
     <div class="hero-stats fi">
@@ -1153,7 +1163,7 @@
   <div class="tldr-inner">
     <div class="tldr-eyebrow">Executive Summary</div>
     <div class="tldr-headline">The 85% one-time rate is an awareness problem disguised as a retention problem.</div>
-    <div class="tldr-body">61% of users arrive through merchant checkout and think Truemed is a payment processor — not a marketplace. They never discover what else their HSA covers. The fix isn't discounts or win-back blasts. It's three layered interventions: close the identity gap (A), build a consumable reorder flywheel that compounds (B), and surface the full benefit through a condition-based dashboard (C).</div>
+    <div class="tldr-body">61% of users arrive through merchant checkout and think Truemed is a payment processor, not a marketplace. They never discover what else their HSA covers. The fix isn't discounts or win-back blasts. It's three layered interventions: close the identity gap (A), build a consumable reorder flywheel that compounds (B), and surface the full benefit through a condition-based dashboard (C).</div>
     <div class="tldr-jump">
       <a href="#data"><span class="tj-num">D</span>Data & Evidence</a>
       <a href="#part1"><span class="tj-num">1</span>Diagnosis</a>
@@ -1176,7 +1186,7 @@
     </div>
   </div>
 </div>
-<p class="part-desc fi">Synthetic data modeled on real Truemed patterns — cohort metrics, category behavior, channel retention, engagement signals, and user interviews.</p>
+<p class="part-desc fi">Synthetic data modeled on real Truemed patterns. Cohort metrics, category behavior, channel retention, engagement signals, and user interviews.</p>
 
 <div class="coll-section open" id="data-cohort">
   <div class="coll-header" onclick="this.parentElement.classList.toggle('open')">
@@ -1191,7 +1201,7 @@
 <section>
   <div class="sub-label fi"><span class="dot"></span> Cohort Overview</div>
   <h2 class="section-heading fi">The retention cliff</h2>
-  <p class="section-desc fi">Truemed lets qualified users buy health & wellness products with pre-tax HSA/FSA dollars. The value prop lands — but users don't come back.</p>
+  <p class="section-desc fi">Truemed lets qualified users buy health & wellness products with pre-tax HSA/FSA dollars. The value prop lands, but users don't come back.</p>
   <div class="glass-grid fi">
     <div class="glass-card"><div class="gc-v" style="color:var(--neon)">42K</div><div class="gc-l">Unique purchasers<br>(trailing 12 mo)</div></div>
     <div class="glass-card"><div class="gc-v" style="color:var(--coral)">35.7K</div><div class="gc-l">Users with exactly<br>1 purchase (85%)</div></div>
@@ -1226,7 +1236,7 @@
 
 <div class="insight-break fi">
   <div class="ib-num">28%</div>
-  <div class="ib-text">Supplements repeat rate — 4x higher than fitness equipment</div>
+  <div class="ib-text">Supplements repeat rate, 4x higher than fitness equipment</div>
 </div>
   </div>
 </div>
@@ -1460,10 +1470,10 @@
 <section id="p1-causes">
   <div class="sub-label fi"><span class="dot"></span> Root Causes</div>
   <h2 class="section-heading fi">Three root causes, ordered by leverage</h2>
-  <p class="section-desc fi">Every Truemed user has already told the company what their health goal is at the moment of qualification. This is the richest first-party preference signal imaginable — collected before the first purchase — and it's currently being wasted.</p>
+  <p class="section-desc fi">Every Truemed user has already told the company what their health goal is at the moment of qualification. This is the richest first-party preference signal imaginable, collected before the first purchase, and it's currently being wasted.</p>
   <div class="diag-grid fi">
-    <div class="diag-card"><div class="dn">01</div><div class="db sv">Solvable</div><h3>Users Don't Know What Truemed Is</h3><p>61% of users (25,620 people) came through merchant checkout — a widget on a brand's site. They think Truemed is a payment processor. Merchant-checkout repeat rate: 9%. Direct-to-truemed.com: 22%. Referral (a friend explained it): 31%. The gap is perception, not intent — and there's zero incremental CAC to close it.</p></div>
-    <div class="diag-card"><div class="dn">02</div><div class="db sv">Structural + Solvable</div><h3>No Reason or Urgency to Return</h3><p>60% of first purchases land in durable categories (Exercise 34%, Sleep 18%, Light Therapy 8%) — a structural headwind. But the solvable part is equally large: savings math is invisible (HSA saves 25–35% vs brand subscription's 10–15%), there's no FSA expiration urgency, and no reorder prompt exists at all.</p></div>
+    <div class="diag-card"><div class="dn">01</div><div class="db sv">Solvable</div><h3>Users Don't Know What Truemed Is</h3><p>61% of users (25,620 people) came through merchant checkout, a widget on a brand's site. They think Truemed is a payment processor. Merchant-checkout repeat rate: 9%. Direct-to-truemed.com: 22%. Referral (a friend explained it): 31%. The gap is perception, not intent, and there's zero incremental CAC to close it.</p></div>
+    <div class="diag-card"><div class="dn">02</div><div class="db sv">Structural + Solvable</div><h3>No Reason or Urgency to Return</h3><p>60% of first purchases land in durable categories (Exercise 34%, Sleep 18%, Light Therapy 8%), a structural headwind. But the solvable part is equally large: savings math is invisible (HSA saves 25–35% vs brand subscription's 10–15%), there's no FSA expiration urgency, and no reorder prompt exists at all.</p></div>
     <div class="diag-card"><div class="dn">03</div><div class="db sv">Mostly Solvable</div><h3>Motivated Users Hit Friction</h3><p>Even users who want to return face real friction: no visibility into what else their LMN covers, re-qualification required across merchants, reimbursement complexity (18% of one-time vs 52% of repeat buyers filed a claim), and external checkout routing. Most of these are product decisions, not structural constraints.</p></div>
   </div>
 </section>
@@ -1655,9 +1665,18 @@
     <p class="int-desc">The merchant-checkout user finishes their order on a brand's site thinking Truemed is a payment processor. Four surfaces close that gap without a new merchant integration: a qualification interstitial right after LMN approval, the order confirmation page, the reimbursement claim flow, and a delivery-timed bridging email.</p>
     <div class="int-grid">
       <div class="int-cell"><div class="ic-l">Hypothesis</div><p>Close the 13-point merchant-checkout gap (9% → 12–14%) within 6 months by making the marketplace visible at the moment users are already engaged with their purchase.</p></div>
-      <div class="int-cell"><div class="ic-l">Primary Metric</div><p>Post-purchase marketplace visit rate for merchant-checkout users.</p></div>
-      <div class="int-cell"><div class="ic-l">Guardrail</div><p>Checkout completion rate. The interstitial must not add friction to the purchase flow. If checkout drops, pull immediately.</p></div>
-      <div class="int-cell"><div class="ic-l">Why First</div><p>Scale (6x larger than any other segment), perception gap not intent gap, zero incremental CAC. Table stakes for B and C to have any traffic to convert.</p></div>
+      <div class="int-cell"><div class="ic-l">Primary Metric</div><p>Post-purchase marketplace visit rate for merchant-checkout users. Baseline: direct-to-truemed.com users visit at 22%; we need to establish the current merchant-checkout visit rate (likely far lower) and expect it to increase. Secondary: 90-day repeat purchase rate for merchant-checkout users (currently 9%, target ~13%).</p></div>
+      <div class="int-cell"><div class="ic-l">Guardrail</div><p>Checkout completion rate for the qualification interstitial &mdash; kill if completion drops more than 2 points vs. control. Email unsubscribe rate for the bridging email.</p></div>
+      <div class="int-cell"><div class="ic-l">Why This Intervention</div><p>Merchant-checkout is the largest segment by 6x, the gap is a perception problem not an intent problem (these users had a great first experience and saved money), and every repeat purchase from this cohort is at zero incremental CAC &mdash; pure margin. Without A, B and C have no traffic to convert. This is table stakes.</p></div>
+      <div class="int-cell"><div class="ic-l">Target</div><p>All merchant-checkout users (25,620 people), with content personalized by LMN condition and first-purchase category.</p></div>
+      <div class="int-cell"><div class="ic-l">Behavior Change</div><div class="behavior-shift"><span class="bs-from">"Truemed is how I paid for this one thing"</span><span class="bs-arrow">&rarr;</span><span class="bs-to">"Truemed is a marketplace where my HSA covers an entire category of health products."</span></div></div>
+    </div>
+    <div class="tradeoff-block">
+      <div class="tradeoff-label">Trade-offs &amp; Risks</div>
+      <div class="tradeoff-item"><strong>Funnel disruption (biggest risk).</strong> The qualification interstitial sits between qualifying and completing a purchase. If it feels like an upsell, it erodes trust and kills conversion. Mitigation: informational tone ("here's what you're entitled to"), not commercial. Primary CTA is always "Continue to checkout."</div>
+      <div class="tradeoff-item"><strong>Merchant relationship risk.</strong> Some merchants may object to Truemed showing breadth during a flow initiated from their site. Mitigation: show category-level breadth, not specific competing merchant products.</div>
+      <div class="tradeoff-item"><strong>Contractual/data risk.</strong> Need to confirm merchant contracts allow post-purchase outreach. If not, email is blocked &mdash; lean on interstitial, confirmation page, and reimbursement flow.</div>
+      <div class="tradeoff-item"><strong>Catalog thinness.</strong> If categories shown have few products, the reveal backfires. Suppress the interstitial for conditions with thin coverage.</div>
     </div>
     <div class="math-callout">
       <div class="math-callout-title">The 13-point gap</div>
@@ -1676,10 +1695,20 @@
     </div>
     <p class="int-desc">Supplements repeat at 28%. Food at 26%. These users have a natural reorder cadence, but they're just going back to the original brand because there's no nudge to reorder through Truemed with pre-tax dollars. Three changes: surface a subscription option during the initial Truemed checkout for any consumable product, ensure the LMN explicitly recommends ongoing use of the supplement or product, and send a 30–60 day reorder email that links directly to a pre-filled checkout page.</p>
     <div class="int-grid">
+      <div class="int-cell"><div class="ic-l">Hypothesis</div><p>Consumable buyers who are offered a subscription option at first checkout &mdash; backed by an LMN that explicitly recommends ongoing use &mdash; will subscribe at meaningfully higher rates than the current organic reorder rate, because two barriers fall simultaneously: the clinical justification for recurring HSA purchases is pre-built into the LMN, and the reorder path is frictionless (confirm and pay, no re-qualification). The 30&ndash;60-day reorder email then recaptures users who didn't subscribe at checkout by making the savings comparison explicit (25&ndash;35% HSA tax savings vs. 10&ndash;15% brand subscription discount).</p></div>
+      <div class="int-cell"><div class="ic-l">Primary Metric</div><p>Consumable reorder rate through Truemed &mdash; the percentage of consumable first-purchasers who make a second consumable purchase through Truemed within 90 days. Baselines: Supplements &amp; Nutrition repeat at 28% ($74 AOV). Healthy Food &amp; Groceries repeat at 26% ($63 AOV). Most reorders currently leak to brand-direct subscriptions. The filtered lapsed cohort baseline (users who haven't reordered yet) is ~15%.</p></div>
+      <div class="int-cell"><div class="ic-l">Guardrail</div><p>First guardrail: email open rate signals interest in subscriptions of consumables and can be compared with product recommendation email open rate. Second guardrail: email fatigue through unsubscribe rate on reorder nudges.</p></div>
       <div class="int-cell"><div class="ic-l">Merchant Pitch</div><p>"Route your reorders through Truemed and you can charge full price while increasing conversion, because the customer is paying with pre-tax health dollars instead of after-tax income. You stop discounting. We handle the eligibility. Everyone wins."</p></div>
-      <div class="int-cell"><div class="ic-l">Primary Metric</div><p>Consumable reorder rate through Truemed within 90 days (current baseline ~15–26% depending on category).</p></div>
-      <div class="int-cell"><div class="ic-l">The Flywheel</div><p>More merchants → richer catalog → more users → stronger pitch to next merchant → supply grows. Each signed merchant makes the next one easier to close.</p></div>
-      <div class="int-cell"><div class="ic-l">LTV Math</div><p>Supplements: $74 AOV × 3 purchases = $222 LTV, approaching Exercise equipment's $312 one-time. At scale, consumables become the LTV engine of the business.</p></div>
+      <div class="int-cell"><div class="ic-l">Target</div><p>All consumable purchasers as their first or second transaction with Truemed. The intervention touches two moments: the first purchase (where the subscription option is presented) and the reorder window (where a frictionless re-checkout replaces full re-qualification).</p></div>
+      <div class="int-cell"><div class="ic-l">Behavior Change</div><div class="behavior-shift"><span class="bs-from">"I bought my supplements once through Truemed and then went back to reordering directly from the brand"</span><span class="bs-arrow">&rarr;</span><span class="bs-to">"I subscribed at checkout, my LMN covers ongoing use, and Truemed reminds me when it's time to reorder &mdash; so I never leave."</span></div></div>
+      <div class="int-cell full-width"><div class="ic-l">Why It's a Flywheel</div><p>More users repeating and subscribing &rarr; stronger pitch for more merchants to integrate &rarr; richer catalog &rarr; more options to purchase from and likelihood to repeat purchase. Each merchant that joins structurally changes what the next user can buy.</p><p style="margin-top:10px"><strong>The LMN subscription unlock:</strong> If we can issue LMNs that cover subscriptions and introduce that enablement at the time of the first purchase, a user becomes a repeat purchaser with Truemed immediately. With a proven base of recurring subscribers, we can ask more merchants to let us add the subscription button on our checkout module &mdash; even if it competes with their own subscription &mdash; because the merchant gets the full price of the product while the user pays with HSA, which is cheaper since it's pre-tax.</p><p style="margin-top:10px"><strong>Key distinction:</strong> A flywheel isn't something that just gets better over time. The test is: does user #50,000 have a structurally different experience than user #1,000, specifically because of what users #1 through #49,999 did? With Intervention B, that's literally true &mdash; user #50,000 can buy products from merchants that only joined because earlier users proved the demand.</p><p style="margin-top:10px"><strong>How to measure compounding vs. linear:</strong> Track merchant inbound inquiry rate correlated to subscriber volume. If merchants start approaching Truemed because they see competitors getting guaranteed recurring volume, the supply flywheel is turning. If Truemed is still cold-calling brands at month 6, the flywheel isn't working &mdash; pivot to deepening existing merchant relationships rather than expanding.</p></div>
+      <div class="int-cell"><div class="ic-l">LTV Math</div><p>Supplements: $74 AOV &times; 3 purchases = $222 LTV, approaching Exercise equipment's $312 one-time. At scale, consumables become the LTV engine of the business.</p></div>
+    </div>
+    <div class="tradeoff-block">
+      <div class="tradeoff-label">Trade-offs &amp; Risks</div>
+      <div class="tradeoff-item"><strong>Infrastructure requirement.</strong> The subscription-at-checkout flow requires changes to Truemed's checkout UI and coordination with the telehealth provider to update LMN templates to include subscription language. The reorder email and pre-filled checkout page are lighter lifts. See Part 3 for the MVP that proves demand before requiring deeper merchant integration.</div>
+      <div class="tradeoff-item"><strong>Merchant resistance.</strong> Brands may perceive Truemed as disintermediating their customer relationship. Positioning: "We're not taking your customer &mdash; we're making their reorder more likely by removing payment friction." Start with merchants who lack strong D2C subscription programs.</div>
+      <div class="tradeoff-item"><strong>AOV trade-off.</strong> Lower AOV ($74 supplements vs. $312 durables), but LTV math favors it: a supplements user who repeats 3x is worth $222, approaching the one-time Peloton buyer. Beyond 3 repeats, they're worth more.</div>
     </div>
     <div class="math-callout">
       <div class="math-callout-title">Revenue model, consumable reorder flywheel</div>
@@ -1693,21 +1722,23 @@
     </div>
 
     <div class="sub-label fi" style="margin-top:36px"><span class="dot"></span> LTV Crossover</div>
-    <p class="section-desc fi" style="margin-bottom:28px">A supplement subscriber overtakes a one-time equipment buyer by purchase #5. Consumables become the LTV engine.</p>
+    <p class="section-desc fi" style="margin-bottom:28px">A supplement subscriber who reorders every 60 days overtakes a one-time equipment buyer by purchase #5. If you retain them across years, consumables become the LTV engine of the business.</p>
     <div class="ltv-compare fi" id="ltvCompare">
       <div class="ltv-col">
         <div class="ltv-bar-outer">
-          <div class="ltv-bar-inner durable" style="--lh:65%">$312</div>
+          <div class="ltv-bar-inner durable" style="--lh:35%">$312</div>
         </div>
         <div class="ltv-label"><strong>Exercise Equipment</strong></div>
-        <div class="ltv-sub">1 purchase × $312 AOV</div>
+        <div class="ltv-sub">1 purchase &times; $312 AOV</div>
+        <div class="ltv-sub" style="margin-top:2px;color:var(--white-50)">Stays flat &mdash; Year 1 = Year 2 = $312</div>
       </div>
       <div class="ltv-col">
         <div class="ltv-bar-outer">
-          <div class="ltv-bar-inner consumable" style="--lh:47%">$222</div>
+          <div class="ltv-bar-inner consumable" style="--lh:50%">$444</div>
         </div>
-        <div class="ltv-label"><strong>Supplements</strong> (3 orders)</div>
-        <div class="ltv-sub">3 × $74 = $222 &nbsp;→&nbsp; 5× = <span style="color:var(--neon);font-weight:600">$370</span></div>
+        <div class="ltv-label"><strong>Supplements</strong> (6 orders / Year 1)</div>
+        <div class="ltv-sub">6 &times; $74 = $444 &nbsp;(1 order every 60 days)</div>
+        <div class="ltv-sub" style="margin-top:2px;color:var(--neon);font-weight:600">Year 2: $888 &nbsp;&middot;&nbsp; Year 3: $1,332</div>
       </div>
     </div>
   </div>
@@ -1720,9 +1751,20 @@
     <p class="int-desc">The LMN qualifies a condition, not a product. A "metabolic health" LMN covers an entire HSA-eligible category for ~12 months, but users have zero visibility into this. Two zones: "You're already qualified" (everything the current LMN covers) and "You might also qualify for..." (adjacent conditions). Cross-category browse is currently 8% for one-time buyers vs 47% for repeat buyers. 58% of repeat buyers cross categories.</p>
     <div class="int-grid">
       <div class="int-cell"><div class="ic-l">Hypothesis</div><p>Users who see a personalized, condition-organized dashboard will browse 2+ categories at significantly higher rates than the current 8% baseline for one-time buyers. Users who expand their LMN through the dashboard (adding a new condition qualification) will repeat at rates approaching the 31% referral benchmark, because they've invested in their Truemed profile in a way that mirrors the depth of understanding referral users have.</p></div>
-      <div class="int-cell"><div class="ic-l">Primary Metric</div><p>Cross-category browse rate from dashboard entry point.</p></div>
+      <div class="int-cell"><div class="ic-l">Primary Metric</div><p>On-site engagement rate when users visit truemed.com &mdash; click-through rate on dashboard elements and rate of users reaching a merchant site from the dashboard. We expect both to increase significantly from current levels. Secondary: LMN expansion rate &mdash; the percentage of dashboard users who initiate and complete a supplemental qualification.</p></div>
+      <div class="int-cell"><div class="ic-l">Guardrail</div><p>Cross-category page browsing rate (baseline: 8% of one-time buyers browse 2+ categories vs. 47% of repeat buyers). Qualification completion rate for LMN expansions &mdash; if users start and abandon, friction is too high. Compliance review of supplemental qualification process &mdash; additional LMNs must meet the same clinical standards as the original.</p></div>
       <div class="int-cell"><div class="ic-l">Dependency</div><p>Requires A to drive traffic. Without the merchant-checkout discovery layer, the dashboard sits empty waiting for users who don't know it exists.</p></div>
-      <div class="int-cell"><div class="ic-l">Key Insight</div><p>The LMN as a standing benefit, not a one-time coupon, is the mental model shift that turns a 9% repeat rate into a 31% one. The dashboard makes it visible.</p></div>
+      <div class="int-cell"><div class="ic-l">Target</div><p>All returning users, prioritizing merchant-checkout users who've been made marketplace-aware through Intervention A and need a useful destination when they arrive.</p></div>
+      <div class="int-cell"><div class="ic-l">Behavior Change</div><div class="behavior-shift"><span class="bs-from">"I qualified, I bought, there's nothing else for me here"</span><span class="bs-arrow">&rarr;</span><span class="bs-to">"Every time I log in, there's more I can do with my HSA &mdash; and the more I tell Truemed about my health goals, the more it unlocks for me."</span></div></div>
+      <div class="int-cell full-width"><div class="ic-l">Compounding Properties (Not a Full Flywheel)</div><p>Each user who expands their LMN creates a richer profile, which makes their dashboard more valuable, which increases return visits, which creates more expansion opportunities. The condition-to-product matching also improves with scale. But the supply side doesn't structurally change (that's B's flywheel). Frame this as compounding user investment, not a structural flywheel.</p></div>
+      <div class="int-cell"><div class="ic-l">Key Insight</div><p>The LMN as a standing benefit, not a one-time coupon, is the mental model shift that turns a 9% repeat rate (merchant-checkout users who think Truemed is a payment processor) into a 31% one (referral users who had someone explain the breadth). The dashboard makes that understanding visible and self-serve.</p></div>
+    </div>
+    <div class="tradeoff-block">
+      <div class="tradeoff-label">Trade-offs &amp; Risks</div>
+      <div class="tradeoff-item"><strong>Depends on A for traffic.</strong> The dashboard is useless if nobody visits truemed.com. If A underperforms, deprioritize the dashboard and double down on email-based surfaces (B's reorder nudges).</div>
+      <div class="tradeoff-item"><strong>LMN expansion needs clinical validation.</strong> Truemed can't let users self-qualify &mdash; there's a telehealth provider in the loop. If the expansion path requires a full consultation rather than a short questionnaire, the on-ramp promise breaks. Need to understand the minimum viable clinical pathway.</div>
+      <div class="tradeoff-item"><strong>Catalog depth.</strong> If a user expands their LMN but there are only 4 products in the new condition, the dashboard feels empty at peak excitement. Suppress expansion prompts for conditions with thin coverage.</div>
+      <div class="tradeoff-item"><strong>Build complexity.</strong> Heaviest engineering lift of the three. Realistic timeline: v1 (static condition page, no expansion) in 4&ndash;6 weeks; v2 (expansion flow + savings math) in month 3&ndash;4.</div>
     </div>
   </div>
 </section>
@@ -1746,9 +1788,14 @@
 <!-- Hypothesis & Goal -->
 <section id="p3-hypothesis" style="padding-bottom:0">
   <div class="exp-block fi">
-    <div class="exp-block-label"><span class="ebl-dot"></span> Hypothesis & Goal</div>
+    <div class="exp-block-label"><span class="ebl-dot"></span> Goal</div>
+    <h4>Validate that a savings-forward reorder nudge recaptures consumable buyers leaking to brand-direct</h4>
+    <p>If validated, the reorder email becomes the foundation for subscription infrastructure investment in v2. The reorder data becomes the pitch to merchants: "X% of your Truemed customers clicked to reorder through us. Here's why you should integrate a subscription flow."</p>
+  </div>
+  <div class="exp-block fi" style="margin-top:12px">
+    <div class="exp-block-label"><span class="ebl-dot"></span> Hypothesis</div>
     <h4>Savings-math framing will lift consumable reorder rate by 7+ points</h4>
-    <p>Lapsed consumable buyers (supplements + food) have a natural reorder cadence but are going back to the brand directly, often with a 10-15% subscription discount. We believe showing the HSA pre-tax savings wedge (25-35% effective discount) alongside the "your LMN already covers this" message will pull reorders back through Truemed. If validated, this becomes the foundation for subscription infrastructure investment.</p>
+    <p>Lapsed consumable buyers (supplements + food) have a natural reorder cadence but are going back to the brand directly, often with a 10&ndash;15% subscription discount. We believe showing the HSA pre-tax savings wedge (25&ndash;35% effective discount) alongside the "your LMN already covers this" message will pull reorders back through Truemed. We believe this because the user data shows the demand: "I qualified for HSA coverage, bought my supplements, and then never heard from Truemed again. By then I'd already reordered directly from the brand." This user wanted the savings &mdash; Truemed just let them default to the brand by never offering a frictionless reorder path.</p>
   </div>
 </section>
 
@@ -1762,12 +1809,14 @@
   <div class="exp-block fi" style="margin-top:12px">
     <div class="exp-block-label"><span class="ebl-dot"></span> Explicitly Descoped from V1</div>
     <div class="descope-grid">
-      <div class="descope-item"><span class="descope-x">&times;</span>Subscription infrastructure at checkout</div>
-      <div class="descope-item"><span class="descope-x">&times;</span>ML-powered product recommendations</div>
-      <div class="descope-item"><span class="descope-x">&times;</span>LMN template language changes</div>
-      <div class="descope-item"><span class="descope-x">&times;</span>Multi-variant email personalization</div>
-      <div class="descope-item"><span class="descope-x">&times;</span>Merchant-side integration work</div>
-      <div class="descope-item"><span class="descope-x">&times;</span>New user onboarding flow changes</div>
+      <div class="descope-item"><span class="descope-x">&times;</span><span><strong>Updated LMN template with subscription language</strong> &mdash; requires telehealth provider coordination and clinical review; only justified after proving reorder demand with this test (v2)</span></div>
+      <div class="descope-item"><span class="descope-x">&times;</span><span><strong>Subscription opt-in UI on checkout confirmation page</strong> &mdash; requires checkout engineering; only justified after proving users will click through and repurchase (v2)</span></div>
+      <div class="descope-item"><span class="descope-x">&times;</span><span><strong>Subscription option on first-time checkout</strong> &mdash; different ICP (new purchasers vs. reorder cohort); this is a v2 surface once we prove subscription demand</span></div>
+      <div class="descope-item"><span class="descope-x">&times;</span><span><strong>Direct-to-Truemed-checkout CTA</strong> &mdash; can't do this until back-catalog users have subscription-inclusive LMNs</span></div>
+      <div class="descope-item"><span class="descope-x">&times;</span><span><strong>Auto-charge or auto-ship</strong> &mdash; requires deeper merchant integration (v2+)</span></div>
+      <div class="descope-item"><span class="descope-x">&times;</span><span><strong>Merchant co-branded subscription flows</strong> &mdash; requires proven demand data from this test (v3)</span></div>
+      <div class="descope-item"><span class="descope-x">&times;</span><span><strong>Personalization beyond category-level timing</strong> &mdash; refine with v1 behavioral data (v2)</span></div>
+      <div class="descope-item"><span class="descope-x">&times;</span><span><strong>Balance-checking against HSA/FSA accounts</strong> &mdash; complex integration (v2+)</span></div>
     </div>
   </div>
 </section>
@@ -1780,22 +1829,34 @@
     <div class="exp-card"><div class="ec-v" style="color:var(--sky)">80/20</div><div class="ec-l">Treatment / Holdout<br>(1,330 vs 330)</div></div>
     <div class="exp-card"><div class="ec-v" style="color:var(--yellow)">~15%</div><div class="ec-l">Baseline reorder rate<br>(filtered cohort)</div></div>
     <div class="exp-card"><div class="ec-v" style="color:var(--coral)">7 pts</div><div class="ec-l">Min detectable effect<br>(15% → 22%, 80% power)</div></div>
-    <div class="exp-card"><div class="ec-v" style="color:var(--white-80)">60d</div><div class="ec-l">Observation window<br>(grocery: 3-4 wk, supps: 4-8 wk)</div></div>
+    <div class="exp-card"><div class="ec-v" style="color:var(--white-80)">60 days</div><div class="ec-l">Observation window<br>(grocery: 3&ndash;4 weeks, supps: 4&ndash;8 weeks)</div></div>
   </div>
   <div class="exp-block fi" style="margin-top:12px">
     <div class="exp-block-label"><span class="ebl-dot"></span> Why Cohort Holdout (Not A/B)</div>
-    <p>~1,330 treatment, ~330 holdout. With only 1,660 eligible users, a standard 50/50 A/B test would lack statistical power. The 80/20 cohort holdout maximizes learning velocity while maintaining a clean baseline. Grocery results readable at weeks 3-4. Supplement results at weeks 4-8 given longer reorder cadence.</p>
+    <p>~1,330 treatment, ~330 holdout. With only 1,660 eligible users, a standard 50/50 A/B test would lack statistical power. The 80/20 cohort holdout maximizes learning velocity while maintaining a clean baseline. We're not testing copy variants or subject lines. We're testing whether a timed, savings-forward reorder nudge changes reorder behavior at the cohort level. Copy optimization is v2.</p>
+  </div>
+  <div class="exp-block fi" style="margin-top:12px">
+    <div class="exp-block-label"><span class="ebl-dot"></span> What We're Measuring</div>
+    <div class="int-grid" style="margin-top:10px">
+      <div class="int-cell"><div class="ic-l">Leading Indicators (Week 1&ndash;2)</div><p>Email open rate, click-through rate, and early purchase completions.</p></div>
+      <div class="int-cell"><div class="ic-l">Primary Outcome (Week 3&ndash;8)</div><p>Consumable reorder rate through Truemed within 60 days. Grocery results readable at weeks 3&ndash;4 (14&ndash;21 day reorder cycle). Supplement results at weeks 4&ndash;8 (30&ndash;60 day reorder cycle).</p></div>
+      <div class="int-cell"><div class="ic-l">Secondary Observation</div><p>Among treatment-group users who click through, track how many complete a purchase through Truemed (conversion rate) and what product categories they purchase in. This tells us whether the email is driving actual transactions, not just clicks.</p></div>
+      <div class="int-cell"><div class="ic-l">Build Estimate</div><p>No new engineering infrastructure &mdash; the email is the only new build. No merchant cooperation needed beyond existing relationships. Rules-based email timing (14 days groceries, 45 days supplements). Deploy in 2 weeks.</p></div>
+    </div>
   </div>
 </section>
 
 <!-- Kill Criteria -->
 <section id="p3-kill" style="padding-top:24px;padding-bottom:0">
   <div class="exp-block kill-block fi">
-    <div class="exp-block-label"><span class="ebl-dot"></span> Kill Criteria, Defined Upfront</div>
+    <div class="exp-block-label"><span class="ebl-dot"></span> Decision Framework &mdash; Defined Upfront</div>
     <h4>No post-hoc rationalization</h4>
-    <p><strong>Kill if:</strong> &lt;5-point lift in reorder rate OR &lt;5% email CTR after 60 days.</p>
-    <p style="margin-top:8px"><strong>If killed:</strong> The insight is that savings framing alone isn't enough. Reconsider whether the friction is awareness or catalog depth. Pivot to testing Intervention A (discovery system) as the prerequisite.</p>
-    <p style="margin-top:8px"><strong>If signal but below MDE:</strong> Extend observation window to 90 days before calling it. Consumable reorder cadences vary widely.</p>
+    <p style="margin-top:12px"><strong style="color:var(--coral)">Kill if:</strong> &lt;5-point lift in consumable reorder rate through Truemed, or &lt;5% email click-through rate after 60 days. These thresholds indicate the reorder nudge isn't generating enough incremental demand to justify further investment.</p>
+    <p style="margin-top:12px"><strong>If email open rate is low:</strong> The savings message isn't reaching users &mdash; the problem is earlier in the funnel than we thought. Pivot to testing Intervention A (discovery system) to raise awareness before the reorder nudge can work.</p>
+    <p style="margin-top:12px"><strong>If open rate is high but CTA click-through is low:</strong> Users are reading but not acting &mdash; the email copy and design need iteration. Test savings framing variants, subject lines, and visual hierarchy before killing the intervention.</p>
+    <p style="margin-top:12px"><strong>If CTA click-through is high but checkout completion is low:</strong> The demand is there but the purchase flow has too much friction. Push forward with reducing steps in the LMN survey and building a direct-to-Truemed-checkout path in v2.</p>
+    <p style="margin-top:12px"><strong>If signal but below MDE:</strong> Extend observation window to 90 days before calling it. Consumable reorder cadences vary widely.</p>
+    <p style="margin-top:12px"><strong style="color:var(--neon)">Scale if:</strong> Reorder lift is &ge;8 points and email-driven purchase conversion exceeds 10%. Move to v2. The reorder data becomes the foundation for the subscription pitch: "X% of your Truemed customers clicked to reorder through us. Here's why you should integrate a subscription flow."</p>
   </div>
 </section>
 
@@ -1860,7 +1921,7 @@
       <!-- Qualified badge -->
       <div class="em-qualified">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
-        <span>Your LMN for <strong style="color:#183B43;">metabolic health</strong> covers this — no new qualification needed.</span>
+        <span>Your LMN for <strong style="color:#183B43;">metabolic health</strong> covers this. No new qualification needed.</span>
       </div>
 
       <!-- Savings bar chart -->
@@ -1952,17 +2013,18 @@
 
 <section id="p3-scale">
   <div class="sub-label fi"><span class="dot"></span> Scale Plan</div>
-  <h2 class="section-heading fi" style="font-size:clamp(22px,2.5vw,32px)">If results are positive: V1 → V2 → V3</h2>
+  <h2 class="section-heading fi" style="font-size:clamp(22px,2.5vw,32px)">If results are positive: V1 &rarr; V2 &rarr; V3</h2>
+  <p class="section-desc fi">Positive results = reorder lift &ge;8 points and email-driven purchase conversion exceeds 10%. The reorder data becomes the foundation for the subscription pitch to merchants.</p>
   <div class="timeline fi">
     <div class="tl-item">
-      <div class="tl-label">V2 · Scale</div>
+      <div class="tl-label">V2 &middot; Month 2&ndash;3</div>
       <h4>Subscription infrastructure + LMN template language</h4>
-      <p>If v1 shows signal: build subscription option at merchant checkout, update LMN template to recommend subscription for consumable categories, expand reorder email to all new consumable buyers (not just back-catalog).</p>
+      <p>Updated LMN templates with subscription recommendation language. Subscription opt-in UI on Truemed checkout confirmation page with cadence selection (30/45/60/75/90 days). Add subscription option to first-time consumable checkout. Build direct-to-Truemed-checkout reorder path for returning users. Approach 2&ndash;3 brands with highest reorder volume and offer co-branded subscription flow. Add FSA expiration urgency layer for FSA users approaching year-end deadlines.</p>
     </div>
     <div class="tl-item">
-      <div class="tl-label">V3 · Full Flywheel</div>
+      <div class="tl-label">V3 &middot; Month 4+</div>
       <h4>Merchant-integrated HSA subscription rails</h4>
-      <p>Full merchant-integrated HSA subscription infrastructure. At this point the flywheel is live: more merchants → richer consumable catalog → more reorders → stronger pitch to next merchant. The LMN becomes what it always was, a standing benefit, not a one-time coupon.</p>
+      <p>Full merchant-integrated HSA subscription rails. Auto-ship with balance awareness. Multi-merchant subscription dashboard. The pitch to merchants: "We're already driving X subscriptions/month to your products. Integrate deeper: you charge full price, we handle eligibility and clinical justification, your customers pay with pre-tax dollars on a recurring basis. You stop discounting &mdash; and you get guaranteed recurring revenue instead of one-time purchases." This is where the flywheel fully engages &mdash; each merchant integration structurally changes the catalog for the next user.</p>
     </div>
   </div>
 </section>
