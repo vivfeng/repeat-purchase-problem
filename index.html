@@ -1389,29 +1389,29 @@
 
 <section>
   <div class="sub-label fi"><span class="dot"></span> Revenue Impact Model</div>
-  <h2 class="section-heading fi">What a small lift is worth</h2>
-  <p class="section-desc fi">Drag the slider to see how repeat rate improvements translate to incremental annual revenue.</p>
+  <h2 class="section-heading fi">What the consumable flywheel unlocks</h2>
+  <p class="section-desc fi">Consumables (supplements, food) make up 33% of first purchases but drive 60% of repeat revenue. Drag the slider to see what happens when more consumable buyers come back.</p>
   <div class="calc-wrap fi">
     <div class="calc-slider-row">
-      <label class="calc-label">Repeat purchase rate</label>
-      <input type="range" id="calcSlider" min="15" max="40" value="15" step="1" class="calc-range">
-      <div class="calc-val" id="calcVal">15%</div>
+      <label class="calc-label">Consumable repeat rate</label>
+      <input type="range" id="calcSlider" min="27" max="55" value="27" step="1" class="calc-range">
+      <div class="calc-val" id="calcVal">27%</div>
     </div>
     <div class="calc-results">
       <div class="calc-card">
-        <div class="calc-card-label">Current annual repeat revenue</div>
-        <div class="calc-card-val" id="calcBase">$1.18M</div>
+        <div class="calc-card-label">Current consumable repeat revenue</div>
+        <div class="calc-card-val" id="calcBase">$277K</div>
       </div>
       <div class="calc-card">
-        <div class="calc-card-label">Projected annual repeat revenue</div>
-        <div class="calc-card-val highlight" id="calcProj">$1.18M</div>
+        <div class="calc-card-label">Projected consumable repeat revenue</div>
+        <div class="calc-card-val highlight" id="calcProj">$277K</div>
       </div>
       <div class="calc-card accent">
         <div class="calc-card-label">Incremental revenue</div>
         <div class="calc-card-val" id="calcDelta">$0</div>
       </div>
     </div>
-    <p class="calc-note" id="calcNote">Move the slider to model the impact of your interventions.</p>
+    <p class="calc-note" id="calcNote">Baseline: 27% of consumable buyers currently come back for a second purchase.</p>
   </div>
 </section>
 
@@ -1980,22 +1980,24 @@
   function updateCalc() {
     const rate = parseInt(calcSlider.value);
     calcVal.textContent = rate + '%';
-    const baseRev = 42000 * 0.15 * 187;
-    const projRev = 42000 * (rate / 100) * 187;
+    // 42K users × 33% buy consumables × repeat rate × $74 avg consumable AOV
+    const consumableBuyers = 42000 * 0.33;
+    const baseRev = consumableBuyers * 0.27 * 74;
+    const projRev = consumableBuyers * (rate / 100) * 74;
     const delta = projRev - baseRev;
 
-    calcBase.textContent = '$' + (baseRev / 1e6).toFixed(2) + 'M';
-    calcProj.textContent = '$' + (projRev / 1e6).toFixed(2) + 'M';
+    calcBase.textContent = '$' + Math.round(baseRev / 1000) + 'K';
+    calcProj.textContent = delta > 0 ? '$' + Math.round(projRev / 1000) + 'K' : '$' + Math.round(baseRev / 1000) + 'K';
     calcDelta.textContent = delta > 0 ? '+$' + Math.round(delta / 1000) + 'K' : '$0';
 
-    if (rate <= 15) {
-      calcNote.textContent = 'Move the slider to model the impact of your interventions.';
-    } else if (rate <= 22) {
-      calcNote.textContent = 'Achievable with the consumable reorder flywheel alone (Intervention B).';
-    } else if (rate <= 31) {
-      calcNote.textContent = 'Referral users already repeat at ' + rate + '%. This is what closing the perception gap looks like.';
+    if (rate <= 27) {
+      calcNote.textContent = 'Baseline: 27% of consumable buyers currently come back for a second purchase.';
+    } else if (rate <= 35) {
+      calcNote.textContent = 'Achievable with the Consumable Reorder Flywheel — auto-refill reminders and simplified reorder.';
+    } else if (rate <= 45) {
+      calcNote.textContent = 'Comparable to best-in-class DTC subscription brands like Thrive Market or Care/of.';
     } else {
-      calcNote.textContent = 'Aggressive target — would require all three interventions firing together.';
+      calcNote.textContent = 'Aggressive — would require the flywheel plus cross-category consumable discovery.';
     }
   }
 
