@@ -393,35 +393,75 @@
   .cmp-panel.ot .cv { color: var(--coral); }
   .cmp-panel.rp .cv { color: var(--neon); }
 
-  /* ═══════ QUOTES ═══════ */
-  .quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; margin-bottom: 48px; }
+  /* ═══════ JOURNEY MAP ═══════ */
+  .journey { position: relative; margin-bottom: 48px; }
+  .journey::before {
+    content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(180deg, var(--coral) 0%, var(--coral) 70%, var(--neon) 100%);
+    opacity: 0.3;
+  }
+  .journey-stage { position: relative; padding-left: 56px; margin-bottom: 40px; }
+  .journey-stage:last-child { margin-bottom: 0; }
+  .journey-dot {
+    position: absolute; left: 12px; top: 6px; width: 18px; height: 18px;
+    border-radius: 50%; border: 2px solid var(--coral); background: var(--teal-dark);
+    z-index: 1;
+  }
+  .journey-stage.success .journey-dot { border-color: var(--neon); }
+  .journey-stage-header {
+    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 6px;
+  }
+  .journey-stage-num {
+    font-family: var(--font-display); font-size: 11px; font-weight: 700;
+    color: var(--white-50); letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .journey-stage-title {
+    font-family: var(--font-display); font-size: 18px; font-weight: 700;
+    color: var(--white); letter-spacing: -0.3px;
+  }
+  .journey-rc-tag {
+    display: inline-block; font-family: var(--font-display);
+    font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 100px;
+    background: var(--coral-dim); color: var(--coral);
+  }
+  .journey-stage.success .journey-rc-tag { background: var(--neon-dim); color: var(--neon); }
+  .journey-pain {
+    font-size: 14px; color: var(--white-80); line-height: 1.7; margin-bottom: 16px;
+    max-width: 680px; font-weight: 300;
+  }
+  .journey-quotes { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; }
   .q-card {
     background: rgba(22,53,60,0.42);
-    border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 28px; transition: transform .32s, background .32s;
+    border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 20px 22px; transition: transform .32s, background .32s;
     backdrop-filter: blur(8px); position: relative; overflow: hidden;
   }
   .q-card::before {
     content: '\201C';
-    position: absolute; top: 10px; right: 18px;
-    font-family: Georgia, serif; font-size: 80px; line-height: 1;
+    position: absolute; top: 6px; right: 14px;
+    font-family: Georgia, serif; font-size: 64px; line-height: 1;
     color: rgba(238,243,239,0.04); pointer-events: none;
   }
-  .q-card:hover { transform: translateY(-4px); background: rgba(22,53,60,0.7); }
+  .q-card:hover { transform: translateY(-3px); background: rgba(22,53,60,0.7); }
   .q-card.ch { border-left: 3px solid var(--coral); }
-  .q-card.ch:hover { border-color: var(--coral); }
   .q-card.re { border-left: 3px solid var(--neon); }
-  .q-card.re:hover { border-color: var(--neon); }
   .q-tag {
-    display: inline-block;
-    font-family: var(--font-display);
+    display: inline-block; font-family: var(--font-display);
     font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-    padding: 4px 10px; border-radius: 100px; margin-bottom: 16px;
+    padding: 3px 9px; border-radius: 100px; margin-bottom: 10px;
   }
   .q-card.ch .q-tag { background: var(--coral-dim); color: var(--coral); }
   .q-card.re .q-tag { background: var(--neon-dim); color: var(--neon); }
-  .q-card blockquote { font-size: 14px; font-style: italic; line-height: 1.75; margin-bottom: 16px; color: var(--white-80); font-weight: 300; }
-  .q-card .q-at { font-family: var(--font-display); font-size: 11px; color: var(--white-50); font-weight: 600; letter-spacing: 0.3px; }
+  .q-card blockquote { font-size: 13px; font-style: italic; line-height: 1.7; margin-bottom: 10px; color: var(--white-80); font-weight: 300; }
+  .q-card .q-at { font-family: var(--font-display); font-size: 10px; color: var(--white-50); font-weight: 600; letter-spacing: 0.3px; }
+  .journey-insight {
+    margin-top: 12px; padding: 14px 18px;
+    background: rgba(185, 245, 66, 0.04); border: 1px solid rgba(185, 245, 66, 0.10);
+    border-radius: var(--radius-sm); font-size: 13px; color: var(--neon);
+    font-weight: 500; line-height: 1.6;
+  }
+  .journey-insight span { color: var(--white-80); font-weight: 300; }
 
   /* ═══════ DIAGNOSIS CARDS ═══════ */
   .diag-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; margin-bottom: 48px; }
