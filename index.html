@@ -512,6 +512,144 @@
   .tradeoff-block .tradeoff-item:last-child { margin-bottom: 0; }
   .tradeoff-block .tradeoff-item strong { color: var(--ink); font-weight: 600; }
 
+  /* ═══════ UX JOURNEY FLOW ═══════ */
+  .ux-journey {
+    display: flex; align-items: stretch; margin: 24px 0 28px; gap: 0;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .ux-node {
+    flex: 1; min-width: 0; padding: 12px 14px; background: #fff;
+    border: 1px solid var(--border); text-align: center; position: relative; border-right: none;
+  }
+  .ux-node:first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+  .ux-node:last-child { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; border-right: 1px solid var(--border); }
+  .ux-node.new { background: var(--neon-dim); border-color: rgba(23,152,149,0.2); }
+  .ux-node.new + .ux-node { border-left-color: rgba(23,152,149,0.2); }
+  .ux-node-num {
+    font-family: var(--font-display); font-size: 9px; font-weight: 700;
+    color: var(--white-20); margin-bottom: 4px;
+  }
+  .ux-node.new .ux-node-num { color: var(--teal-mid); }
+  .ux-node-label {
+    font-family: var(--font-display); font-size: 10px; font-weight: 600;
+    color: var(--ink); line-height: 1.3;
+  }
+  .ux-node.new .ux-node-label { color: var(--teal-deep); }
+  .ux-node.new::before {
+    content: 'NEW'; position: absolute; top: -8px; left: 50%; transform: translateX(-50%);
+    font-family: var(--font-display); font-size: 7px; font-weight: 800;
+    letter-spacing: 1.5px; color: #fff; background: var(--teal-mid);
+    padding: 2px 6px; border-radius: 4px;
+  }
+
+  /* ═══════ MOCKUP FRAMES ═══════ */
+  .mockup-section { margin: 8px 0 28px; }
+  .mockup-section-label {
+    font-family: var(--font-display); font-size: 9px; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--white-50); margin-bottom: 16px;
+  }
+  .mockup-row { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 4px; }
+  .mockup-frame {
+    flex: 0 0 260px; border: 1px solid var(--border); border-radius: 12px;
+    overflow: hidden; background: #fff; box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  }
+  .mockup-frame.wide { flex: 0 0 340px; }
+  .mockup-bar {
+    padding: 8px 12px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 6px; background: #fafbfb;
+  }
+  .mockup-bar-dots { display: flex; gap: 4px; }
+  .mockup-bar-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(0,0,0,0.08); }
+  .mockup-bar-title {
+    font-family: var(--font-display); font-size: 9px; font-weight: 600;
+    color: var(--white-50); margin-left: 6px;
+  }
+  .mockup-body { padding: 16px; }
+  .mockup-h {
+    font-family: var(--font-display); font-size: 13px; font-weight: 700;
+    color: var(--ink); margin-bottom: 6px; line-height: 1.3;
+  }
+  .mockup-p { font-size: 10px; color: var(--white-50); line-height: 1.6; margin-bottom: 10px; }
+  .mockup-pills { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
+  .mockup-pill {
+    padding: 5px 10px; border-radius: 100px; font-size: 9px; font-weight: 600;
+    font-family: var(--font-display);
+  }
+  .mockup-pill.t { background: var(--neon-dim); color: var(--teal-mid); }
+  .mockup-pill.s { background: var(--sky-dim); color: var(--sky); }
+  .mockup-pill.y { background: var(--yellow-dim); color: #b8860b; }
+  .mockup-btn-m {
+    display: block; width: 100%; padding: 8px; border-radius: 6px;
+    text-align: center; font-family: var(--font-display); font-size: 10px;
+    font-weight: 600; margin-bottom: 6px; border: none;
+  }
+  .mockup-btn-m.pri { background: var(--teal-mid); color: #fff; }
+  .mockup-btn-m.sec { background: transparent; border: 1px solid var(--border); color: var(--ink); }
+  .mockup-divider { border: none; border-top: 1px solid var(--border); margin: 10px 0; }
+  .mockup-radio-group { margin-bottom: 12px; }
+  .mockup-radio {
+    display: flex; align-items: flex-start; gap: 8px; padding: 8px 10px;
+    border: 1px solid var(--border); border-radius: 6px; margin-bottom: 6px;
+  }
+  .mockup-radio.on { border-color: var(--teal-mid); background: var(--neon-dim); }
+  .mockup-radio-dot {
+    width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--border);
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .mockup-radio.on .mockup-radio-dot { border-color: var(--teal-mid); background: var(--teal-mid); box-shadow: inset 0 0 0 2px #fff; }
+  .mockup-radio-label { font-size: 10px; font-weight: 500; color: var(--ink); }
+  .mockup-radio-desc { font-size: 9px; color: var(--white-50); margin-top: 2px; }
+  .mockup-cats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-bottom: 12px; }
+  .mockup-cat {
+    padding: 10px 6px; border: 1px solid var(--border); border-radius: 6px; text-align: center;
+  }
+  .mockup-cat.active { border-color: var(--teal-mid); background: var(--neon-dim); }
+  .mockup-cat-swatch {
+    width: 24px; height: 24px; border-radius: 6px; margin: 0 auto 6px; background: var(--border);
+  }
+  .mockup-cat.active .mockup-cat-swatch { background: var(--teal-mid); }
+  .mockup-cat-name {
+    font-family: var(--font-display); font-size: 8px; font-weight: 600;
+    color: var(--ink); text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .mockup-cat-badge {
+    font-size: 7px; color: var(--teal-mid); font-weight: 700;
+    text-transform: uppercase; margin-top: 3px;
+  }
+  .mockup-section-head {
+    font-family: var(--font-display); font-size: 8px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase; color: var(--white-50); margin: 12px 0 8px;
+  }
+  .mockup-email-subject {
+    font-family: var(--font-display); font-size: 10px; font-weight: 600;
+    color: var(--ink); margin-bottom: 4px;
+  }
+  .mockup-email-from { font-size: 9px; color: var(--white-50); margin-bottom: 10px; }
+  .mockup-check-icon {
+    width: 28px; height: 28px; border-radius: 50%; background: var(--neon-dim);
+    color: var(--teal-mid); display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700; margin-bottom: 8px;
+  }
+  .mockup-item-row {
+    display: flex; justify-content: space-between; padding: 6px 0;
+    font-size: 10px; color: var(--ink); border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+  .mockup-item-row:last-child { border-bottom: none; font-weight: 600; }
+  .mockup-caption {
+    font-family: var(--font-display); font-size: 9px; font-weight: 600;
+    color: var(--white-50); text-align: center; margin-top: 8px;
+  }
+
+  @media (max-width: 768px) {
+    .ux-journey { flex-direction: column; }
+    .ux-node { border-right: 1px solid var(--border); border-bottom: none; }
+    .ux-node:first-child { border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
+    .ux-node:last-child { border-radius: 0 0 var(--radius-sm) var(--radius-sm); border-bottom: 1px solid var(--border); }
+    .mockup-row { flex-direction: column; align-items: stretch; }
+    .mockup-frame, .mockup-frame.wide { flex: none; width: 100%; max-width: 340px; }
+  }
+
   /* ═══════ TIMELINE ═══════ */
   .timeline { position: relative; padding-left: 52px; margin-bottom: 48px; }
   .timeline::before {
@@ -1663,6 +1801,85 @@
       <div class="int-header-text"><div class="int-tag cv">Attacks RC1</div><h3>Post-Purchase Discovery System</h3></div>
     </div>
     <p class="int-desc">The merchant-checkout customer finishes their order on a brand's site thinking Truemed is a payment processor. Four surfaces close that gap without a new merchant integration: a qualification interstitial right after LMN approval, the order confirmation page, the reimbursement claim flow, and a delivery-timed bridging email.</p>
+
+    <!-- Customer journey flow -->
+    <div class="ux-journey fi">
+      <div class="ux-node"><div class="ux-node-num">1</div><div class="ux-node-label">LMN Survey</div></div>
+      <div class="ux-node new"><div class="ux-node-num">2</div><div class="ux-node-label">Qualification Interstitial</div></div>
+      <div class="ux-node"><div class="ux-node-num">3</div><div class="ux-node-label">HSA Checkout</div></div>
+      <div class="ux-node new"><div class="ux-node-num">4</div><div class="ux-node-label">Delivery Email</div></div>
+      <div class="ux-node new"><div class="ux-node-num">5</div><div class="ux-node-label">Reimbursement Email</div></div>
+    </div>
+
+    <!-- UX Mockups -->
+    <div class="mockup-section fi">
+      <div class="mockup-section-label">What the customer sees</div>
+      <div class="mockup-row">
+
+        <!-- Interstitial mockup -->
+        <div class="mockup-frame">
+          <div class="mockup-bar"><div class="mockup-bar-dots"><span></span><span></span><span></span></div><div class="mockup-bar-title">truemed &middot; qualification</div></div>
+          <div class="mockup-body">
+            <div class="mockup-check-icon">&#10003;</div>
+            <div class="mockup-h">You're qualified!</div>
+            <div class="mockup-p">Your HSA also covers 100+ merchants across popular categories like:</div>
+            <div class="mockup-pills">
+              <span class="mockup-pill t">Supplements</span>
+              <span class="mockup-pill s">Healthy Food</span>
+              <span class="mockup-pill y">Exercise Equipment</span>
+            </div>
+            <div class="mockup-btn-m pri">Continue to checkout</div>
+            <div class="mockup-btn-m sec">Explore all categories</div>
+          </div>
+          <div class="mockup-caption">Interstitial after LMN approval</div>
+        </div>
+
+        <!-- Delivery email mockup -->
+        <div class="mockup-frame">
+          <div class="mockup-bar"><div class="mockup-bar-dots"><span></span><span></span><span></span></div><div class="mockup-bar-title">email</div></div>
+          <div class="mockup-body">
+            <div class="mockup-email-subject">Your order is on its way</div>
+            <div class="mockup-email-from">from: orders@truemed.com</div>
+            <hr class="mockup-divider">
+            <div class="mockup-p">Your AG1 order has shipped and will arrive in 3-5 business days.</div>
+            <hr class="mockup-divider">
+            <div class="mockup-section-head">Did you know?</div>
+            <div class="mockup-p">Your HSA also covers 100+ merchants across popular categories like:</div>
+            <div class="mockup-pills">
+              <span class="mockup-pill t">Supplements</span>
+              <span class="mockup-pill s">Healthy Food</span>
+              <span class="mockup-pill y">Equipment</span>
+            </div>
+            <div class="mockup-btn-m pri">Browse what's covered</div>
+          </div>
+          <div class="mockup-caption">Delivery email</div>
+        </div>
+
+        <!-- Reimbursement email mockup -->
+        <div class="mockup-frame">
+          <div class="mockup-bar"><div class="mockup-bar-dots"><span></span><span></span><span></span></div><div class="mockup-bar-title">email</div></div>
+          <div class="mockup-body">
+            <div class="mockup-email-subject">Your HSA reimbursement is ready</div>
+            <div class="mockup-email-from">from: claims@truemed.com</div>
+            <hr class="mockup-divider">
+            <div class="mockup-check-icon">$</div>
+            <div class="mockup-h">$23.70 saved with pre-tax dollars</div>
+            <div class="mockup-p">Your AG1 purchase has been processed for HSA reimbursement.</div>
+            <hr class="mockup-divider">
+            <div class="mockup-section-head">Save more with your qualification</div>
+            <div class="mockup-p">Your HSA covers 100+ merchants across popular categories like:</div>
+            <div class="mockup-pills">
+              <span class="mockup-pill t">Supplements</span>
+              <span class="mockup-pill s">Healthy Food</span>
+            </div>
+            <div class="mockup-btn-m pri">Shop your benefits</div>
+          </div>
+          <div class="mockup-caption">Reimbursement email</div>
+        </div>
+
+      </div>
+    </div>
+
     <div class="int-grid">
       <div class="int-cell"><div class="ic-l">Hypothesis</div><p>Close the 13-point merchant-checkout gap (9% → 12–14%) within 6 months by making the marketplace visible at the moment customers are already engaged with their purchase.</p></div>
       <div class="int-cell"><div class="ic-l">Primary Metric</div><p>Post-purchase marketplace visit rate for merchant-checkout customers. Baseline: direct-to-truemed.com customers visit at 22%. We need to establish the current merchant-checkout visit rate (likely far lower) and expect it to increase. Secondary: 90-day repeat purchase rate for merchant-checkout customers (currently 9%, target ~13%).</p></div>
@@ -1694,6 +1911,62 @@
       <div class="int-header-text"><div class="int-tag fw">Flywheel Bet · Attacks RC2</div><h3>Consumable Reorder Flywheel</h3></div>
     </div>
     <p class="int-desc">Supplements repeat at 28%. Food at 26%. These customers have a natural reorder cadence, but they're just going back to the original brand because there's no nudge to reorder through Truemed with pre-tax dollars. Three changes: surface a subscription option during the initial Truemed checkout for any consumable product, ensure the LMN explicitly recommends ongoing use of the supplement or product, and send a 30–60 day reorder email that links directly to a pre-filled checkout page.</p>
+
+    <!-- Customer journey flow -->
+    <div class="ux-journey fi">
+      <div class="ux-node"><div class="ux-node-num">1</div><div class="ux-node-label">LMN Survey</div></div>
+      <div class="ux-node"><div class="ux-node-num">2</div><div class="ux-node-label">Qualification</div></div>
+      <div class="ux-node new"><div class="ux-node-num">3</div><div class="ux-node-label">Subscribe at Checkout</div></div>
+      <div class="ux-node"><div class="ux-node-num">4</div><div class="ux-node-label">Order Delivered</div></div>
+      <div class="ux-node new"><div class="ux-node-num">5</div><div class="ux-node-label">30&ndash;60 Day Reorder Email</div></div>
+    </div>
+
+    <!-- UX Mockup -->
+    <div class="mockup-section fi">
+      <div class="mockup-section-label">What the customer sees</div>
+      <div class="mockup-row">
+
+        <!-- Checkout with subscription mockup -->
+        <div class="mockup-frame wide">
+          <div class="mockup-bar"><div class="mockup-bar-dots"><span></span><span></span><span></span></div><div class="mockup-bar-title">truemed &middot; checkout</div></div>
+          <div class="mockup-body">
+            <div class="mockup-h">Order Summary</div>
+            <div class="mockup-item-row"><span>AG1 Greens Powder</span><span>$79.00</span></div>
+            <div class="mockup-item-row"><span>HSA pre-tax savings</span><span style="color:var(--teal-mid)">-$23.70</span></div>
+            <div class="mockup-item-row"><span>Your cost (after tax benefit)</span><span>$55.30</span></div>
+            <hr class="mockup-divider">
+            <div class="mockup-section-head">How often do you want this?</div>
+            <div class="mockup-radio-group">
+              <div class="mockup-radio"><div class="mockup-radio-dot"></div><div><div class="mockup-radio-label">One-time purchase</div></div></div>
+              <div class="mockup-radio on"><div class="mockup-radio-dot"></div><div><div class="mockup-radio-label">Subscribe &amp; save with HSA</div><div class="mockup-radio-desc">Every 30 days &middot; $79/mo &middot; Your LMN covers ongoing use</div><div class="mockup-radio-desc" style="color:var(--teal-mid);font-weight:600;margin-top:4px">No re-qualification needed. Cancel anytime.</div></div></div>
+            </div>
+            <div class="mockup-btn-m pri">Pay with HSA &mdash; $79.00</div>
+          </div>
+          <div class="mockup-caption">Subscription option at Truemed checkout</div>
+        </div>
+
+        <!-- Reorder email mockup -->
+        <div class="mockup-frame">
+          <div class="mockup-bar"><div class="mockup-bar-dots"><span></span><span></span><span></span></div><div class="mockup-bar-title">email</div></div>
+          <div class="mockup-body">
+            <div class="mockup-email-subject">Time to reorder your AG1?</div>
+            <div class="mockup-email-from">from: hello@truemed.com</div>
+            <hr class="mockup-divider">
+            <div class="mockup-p">You purchased AG1 Greens Powder 32 days ago. Ready for a refill?</div>
+            <div class="mockup-section-head">Why reorder through Truemed?</div>
+            <div class="mockup-p" style="margin-bottom:4px"><strong style="color:var(--ink)">HSA savings: 25&ndash;35%</strong> in pre-tax dollars</div>
+            <div class="mockup-p" style="margin-bottom:4px"><strong style="color:var(--ink)">Brand subscription: 10&ndash;15%</strong> discount</div>
+            <div class="mockup-p" style="color:var(--teal-mid);font-weight:600">You save more through Truemed</div>
+            <hr class="mockup-divider">
+            <div class="mockup-btn-m pri">Reorder with HSA &mdash; 1 click</div>
+            <div class="mockup-p" style="text-align:center;font-size:9px;margin-top:4px">Pre-filled checkout. No re-qualification.</div>
+          </div>
+          <div class="mockup-caption">30&ndash;60 day reorder email</div>
+        </div>
+
+      </div>
+    </div>
+
     <div class="int-grid">
       <div class="int-cell"><div class="ic-l">Hypothesis</div><p>Consumable buyers who are offered a subscription option at first checkout, backed by an LMN that explicitly recommends ongoing use, will subscribe at meaningfully higher rates than the current organic reorder rate, because two barriers fall simultaneously: the clinical justification for recurring HSA purchases is pre-built into the LMN, and the reorder path is frictionless (confirm and pay, no re-qualification). The 30&ndash;60-day reorder email then recaptures customers who didn't subscribe at checkout by making the savings comparison explicit (25&ndash;35% HSA tax savings vs. 10&ndash;15% brand subscription discount).</p></div>
       <div class="int-cell"><div class="ic-l">Primary Metric</div><p>Consumable reorder rate through Truemed, the percentage of consumable first-purchasers who make a second consumable purchase through Truemed within 90 days. Baselines: Supplements &amp; Nutrition repeat at 28% ($74 AOV). Healthy Food &amp; Groceries repeat at 26% ($63 AOV). Most reorders currently leak to brand-direct subscriptions. The filtered lapsed cohort baseline (customers who haven't reordered yet) is ~15%.</p></div>
@@ -1749,6 +2022,40 @@
       <div class="int-header-text"><div class="int-tag cv">Attacks RC3 · Depends on A</div><h3>Condition-Based Benefits Dashboard</h3></div>
     </div>
     <p class="int-desc">The LMN qualifies a condition, not a product. A "metabolic health" LMN covers an entire HSA-eligible category for ~12 months, but customers have zero visibility into this. Two zones: "You're already qualified" (everything the current LMN covers) and "You might also qualify for..." (adjacent conditions). Cross-category browse is currently 8% for one-time buyers vs 47% for repeat buyers. 58% of repeat buyers cross categories.</p>
+
+    <!-- UX Mockup -->
+    <div class="mockup-section fi">
+      <div class="mockup-section-label">What the customer sees</div>
+      <div class="mockup-row">
+
+        <!-- Dashboard mockup -->
+        <div class="mockup-frame wide">
+          <div class="mockup-bar"><div class="mockup-bar-dots"><span></span><span></span><span></span></div><div class="mockup-bar-title">truemed.com</div></div>
+          <div class="mockup-body">
+            <div class="mockup-p" style="margin-bottom:2px">Welcome back, Sarah</div>
+            <div class="mockup-h">Your Metabolic Health Benefits</div>
+            <div class="mockup-p">Your LMN qualification is active for 11 more months</div>
+
+            <div class="mockup-section-head">You're already qualified for</div>
+            <div class="mockup-cats">
+              <div class="mockup-cat active"><div class="mockup-cat-swatch"></div><div class="mockup-cat-name">Supplements</div><div class="mockup-cat-badge">Purchased</div></div>
+              <div class="mockup-cat active"><div class="mockup-cat-swatch"></div><div class="mockup-cat-name">Healthy Food</div><div class="mockup-cat-badge">12 products</div></div>
+              <div class="mockup-cat active"><div class="mockup-cat-swatch"></div><div class="mockup-cat-name">Equipment</div><div class="mockup-cat-badge">8 products</div></div>
+            </div>
+
+            <div class="mockup-section-head">You might also qualify for</div>
+            <div class="mockup-cats" style="grid-template-columns:1fr 1fr">
+              <div class="mockup-cat"><div class="mockup-cat-swatch" style="background:var(--sky)"></div><div class="mockup-cat-name">Sleep Health</div><div class="mockup-cat-badge" style="color:var(--sky)">Quick qualification</div></div>
+              <div class="mockup-cat"><div class="mockup-cat-swatch" style="background:var(--yellow)"></div><div class="mockup-cat-name">Mental Wellness</div><div class="mockup-cat-badge" style="color:#b8860b">Quick qualification</div></div>
+            </div>
+            <div class="mockup-btn-m pri">Explore all categories</div>
+          </div>
+          <div class="mockup-caption">Truemed.com dashboard for returning customers</div>
+        </div>
+
+      </div>
+    </div>
+
     <div class="int-grid">
       <div class="int-cell"><div class="ic-l">Hypothesis</div><p>Customers who see a personalized, condition-organized dashboard will browse 2+ categories at significantly higher rates than the current 8% baseline for one-time buyers. Customers who expand their LMN through the dashboard (adding a new condition qualification) will repeat at rates approaching the 31% referral benchmark, because they've invested in their Truemed profile in a way that mirrors the depth of understanding referral customers have.</p></div>
       <div class="int-cell"><div class="ic-l">Primary Metric</div><p>On-site engagement rate when customers visit truemed.com. Click-through rate on dashboard elements and rate of customers reaching a merchant site from the dashboard. We expect both to increase significantly from current levels. Secondary: LMN expansion rate, the percentage of dashboard customers who initiate and complete a supplemental qualification.</p></div>
