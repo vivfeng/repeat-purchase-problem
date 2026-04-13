@@ -164,6 +164,15 @@
   nav a:hover { color: var(--white); background: var(--white-10); }
   nav a.active { color: var(--teal-dark); background: var(--neon); }
   nav a.active .nav-num { color: var(--teal-dark); background: rgba(13,34,40,0.15); }
+
+  /* Reading progress bar */
+  #progressBar {
+    position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+    background: linear-gradient(90deg, var(--neon), var(--yellow));
+    z-index: 200; pointer-events: none;
+    box-shadow: 0 0 10px rgba(185,245,66,0.5);
+    transition: width 0.08s linear;
+  }
   nav a .nav-num {
     font-family: var(--font-display); font-size: 10px; font-weight: 700;
     background: var(--white-10); width: 20px; height: 20px; border-radius: 50%;
@@ -709,9 +718,157 @@
     .scroll-cue { display: none; }
     footer { padding: 60px 24px; }
   }
+
+  /* ═══════ EMAIL MOCKUP (Part 3) ═══════ */
+  .email-device {
+    max-width: 520px;
+    margin: 0 auto 48px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: rgba(22,53,60,0.35);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.35), 0 0 0 1px rgba(238,243,239,0.04);
+  }
+  .email-device-bar {
+    display: flex; align-items: center; gap: 8px;
+    padding: 14px 20px;
+    background: rgba(238,243,239,0.03);
+    border-bottom: 1px solid var(--border);
+  }
+  .email-device-bar .edb-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--white-20); }
+  .email-device-bar .edb-title {
+    flex: 1; text-align: center;
+    font-family: var(--font-display); font-size: 10px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase; color: var(--white-50);
+  }
+  .em-inbox-preview {
+    padding: 16px 24px;
+    border-bottom: 1px solid rgba(238,243,239,0.06);
+  }
+  .em-inbox-from { font-size: 11px; color: var(--white-50); margin-bottom: 4px; }
+  .em-inbox-subject { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+  .em-inbox-preheader { font-size: 12px; color: var(--white-50); font-weight: 300; }
+
+  .em-body {
+    background: #ffffff;
+    color: #1A202C;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  .em-body * { color: inherit; font-family: inherit; }
+
+  .em-header { padding: 28px 32px 20px; border-bottom: 1px solid #EEEEE8; }
+  .em-hero { padding: 28px 32px 8px; }
+  .em-hero h3 {
+    font-size: 21px; font-weight: 700; color: #183B43;
+    margin: 0 0 4px; line-height: 1.3; letter-spacing: -0.02em;
+  }
+  .em-hero .em-sub { font-size: 13px; color: #7A8A8F; margin: 0; line-height: 1.5; }
+
+  .em-product {
+    margin: 16px 32px 0;
+    border: 1px solid #E8E8E0; border-radius: 12px;
+    overflow: hidden; background: #FAFAF7;
+  }
+  .em-product-inner { display: flex; align-items: center; padding: 16px; gap: 14px; }
+  .em-product-img {
+    width: 64px; height: 64px; background: #fff; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid #E8E8E0; flex-shrink: 0;
+  }
+  .em-product-img svg { width: 28px; height: 28px; color: #B0B8A8; }
+  .em-product-info .em-brand { font-size: 10px; color: #7A8A8F; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 3px; font-weight: 500; }
+  .em-product-info .em-name { font-size: 14px; font-weight: 700; color: #183B43; margin: 0 0 3px; }
+  .em-product-info .em-price { font-size: 14px; font-weight: 700; color: #183B43; margin: 0; }
+
+  .em-qualified {
+    margin: 10px 32px 0; padding: 10px 14px;
+    background: #F0F9F4; border-radius: 8px;
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; color: #2D6B4A; line-height: 1.4;
+  }
+  .em-qualified svg { flex-shrink: 0; width: 16px; height: 16px; color: #2D6B4A; }
+
+  /* Savings bar chart */
+  .em-savings { margin: 20px 32px 0; }
+  .em-savings-title { font-size: 11px; font-weight: 600; color: #7A8A8F; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 12px; }
+  .em-sbar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .em-sbar-row:last-child { margin-bottom: 0; }
+  .em-sbar-label { width: 90px; font-size: 11px; color: #7A8A8F; text-align: right; flex-shrink: 0; line-height: 1.3; }
+  .em-sbar-track { flex: 1; height: 28px; background: #F5F5F0; border-radius: 6px; overflow: hidden; position: relative; }
+  .em-sbar-fill {
+    height: 100%; border-radius: 6px; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px;
+    font-size: 12px; font-weight: 700; transition: width 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .em-sbar-fill.full { background: #E8E8E0; color: #7A8A8F; width: 100%; }
+  .em-sbar-fill.sub { background: linear-gradient(90deg, #E0E8E2, #D0DDD3); color: #5A7A62; width: 87%; }
+  .em-sbar-fill.hsa { background: linear-gradient(90deg, #183B43, #2a6270); color: #fff; width: 68%; }
+  .em-sbar-amount { font-size: 11px; color: #7A8A8F; width: 54px; text-align: left; flex-shrink: 0; font-weight: 500; }
+  .em-sbar-amount.hsa-amt { color: #183B43; font-weight: 700; }
+  .em-savings-note { font-size: 11px; color: #2D6B4A; margin: 10px 0 0; line-height: 1.5; text-align: center; }
+
+  .em-cta {
+    padding: 20px 32px 24px; text-align: center;
+  }
+  .em-cta-btn {
+    display: inline-block; background: #183B43; color: #ffffff !important;
+    font-size: 14px; font-weight: 700; padding: 13px 40px;
+    border-radius: 50px; text-decoration: none; letter-spacing: -0.01em;
+  }
+
+  .em-divider { height: 1px; background: #EEEEE8; margin: 0 32px; }
+
+  /* Condition-based discovery */
+  .em-discover { padding: 20px 32px; }
+  .em-discover-title { font-size: 12px; color: #7A8A8F; margin: 0 0 12px; font-weight: 500; }
+  .em-cat-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .em-cat-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px; background: #FAFAF7; border: 1px solid #E8E8E0;
+    border-radius: 100px; font-size: 12px; color: #183B43; font-weight: 500;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .em-cat-pill:hover { background: #F0F5F0; }
+  .em-cat-pill svg { width: 14px; height: 14px; color: #7A8A8F; }
+
+  .em-supply-note {
+    padding: 0 32px 16px; text-align: center;
+    font-size: 11px; color: #B0B8A8; line-height: 1.5;
+  }
+
+  .em-footer {
+    padding: 18px 32px; background: #F5F5F0; border-top: 1px solid #EEEEE8; text-align: center;
+  }
+  .em-footer p { font-size: 11px; color: #B0B8A8; margin: 0 0 3px; line-height: 1.5; }
+  .em-footer a { color: #7A8A8F; text-decoration: underline; text-underline-offset: 2px; }
+
+  /* Annotation callouts */
+  .em-annotation {
+    max-width: 520px; margin: 0 auto;
+    padding: 12px 20px;
+    font-size: 12px; line-height: 1.6; color: var(--white-50);
+    border-left: 2px solid rgba(185,245,66,0.3);
+    margin-bottom: 12px;
+    font-weight: 300;
+  }
+  .em-annotation strong { color: var(--neon); font-weight: 600; font-family: var(--font-display); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+  .em-annotation:first-of-type { margin-top: 20px; }
+
+  /* Responsive for email mockup */
+  @media (max-width: 580px) {
+    .email-device { margin-left: -8px; margin-right: -8px; border-radius: 14px; }
+    .em-body { font-size: 13px; }
+    .em-hero, .em-savings, .em-discover, .em-qualified, .em-cta, .em-footer, .em-divider, .em-supply-note { padding-left: 20px; padding-right: 20px; }
+    .em-product { margin-left: 20px; margin-right: 20px; }
+    .em-qualified { margin-left: 20px; margin-right: 20px; }
+    .em-savings { margin-left: 20px; margin-right: 20px; }
+    .em-sbar-label { width: 70px; font-size: 10px; }
+  }
 </style>
 </head>
 <body>
+
+<div id="progressBar"></div>
 
 <!-- ═══════ INTRO SCREEN ═══════ -->
 <div class="intro-screen" id="intro">
@@ -1169,8 +1326,164 @@
     <div class="tl-item">
       <div class="tl-label">Week 1 · MVP</div>
       <h4>Single reorder nudge email — no new infrastructure</h4>
-      <p>One email to lapsed consumable buyers (supplements + food) from the back-catalog. Contains: savings comparison table (full price vs brand subscription 10–15% vs Truemed HSA 25–35%), "Your LMN already covers this — no new qualification needed," and a lightweight cross-category discovery section. No ML, no subscription rails — just copy and a pre-filled checkout link.</p>
+      <p>One email to lapsed consumable buyers (supplements + food) from the back-catalog. Contains: savings comparison (full price vs brand subscription 10-15% vs Truemed HSA 25-35%), "Your LMN already covers this," and a lightweight cross-category discovery section. No ML, no subscription rails — just copy and a pre-filled checkout link.</p>
     </div>
+  </div>
+</section>
+
+<section>
+  <div class="sub-label fi"><span class="dot"></span> The MVP Email</div>
+  <h2 class="section-heading fi">What it looks like in the inbox</h2>
+  <p class="section-desc fi">A single email — the only new build. Everything else (merchant product pages, Truemed checkout, LMN qualification) already exists. The visual bar chart makes the HSA savings wedge impossible to miss.</p>
+
+  <!-- Email device frame -->
+  <div class="email-device fi">
+    <div class="email-device-bar">
+      <div class="edb-dot"></div><div class="edb-dot"></div><div class="edb-dot"></div>
+      <div class="edb-title">Inbox Preview</div>
+      <div style="width:21px;"></div>
+    </div>
+
+    <!-- Inbox preview line -->
+    <div class="em-inbox-preview">
+      <div class="em-inbox-from">Truemed &lt;benefits@truemed.com&gt;</div>
+      <div class="em-inbox-subject">Time to restock your Magnesium L-Threonate — your HSA already covers it</div>
+      <div class="em-inbox-preheader">Pay with pre-tax dollars and keep more of your money. No new qualification needed.</div>
+    </div>
+
+    <!-- Email body (white background, scoped styles) -->
+    <div class="em-body">
+
+      <!-- Truemed logo -->
+      <div class="em-header">
+        <svg width="108" height="20" viewBox="0 0 118 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M29.422 19.355V4.497H23.869V2.395H37.151V4.497H31.598V19.355H29.422Z" fill="#183B43"/>
+          <path d="M35.148 19.355V6.999H37.2V8.777C37.95 7.651 39.151 6.999 40.977 6.999H41.777V9.099H40.777C38.276 9.099 37.275 10.549 37.275 12.55V19.355H35.148Z" fill="#183B43"/>
+          <path d="M42.804 13.951V6.997H44.93V13.852C44.93 16.203 46.255 17.604 48.308 17.604C50.361 17.604 51.686 16.203 51.686 13.852V6.997H53.812V13.951C53.812 17.429 51.561 19.605 48.309 19.605C45.057 19.605 42.806 17.429 42.806 13.951" fill="#183B43"/>
+          <path d="M56.889 12.076H64.744C64.494 10.12 62.992 8.698 60.816 8.698C58.815 8.698 57.289 10.023 56.889 12.076ZM54.686 13.176C54.686 9.574 57.363 6.747 60.839 6.747C64.395 6.747 66.919 9.399 66.919 13.001C66.926 13.302 66.91 13.603 66.868 13.902H56.837C57.112 16.203 58.764 17.654 60.99 17.654C62.716 17.654 64.041 16.778 64.767 15.431L66.518 16.409C65.343 18.411 63.318 19.609 60.99 19.609C57.413 19.609 54.686 16.783 54.686 13.181" fill="#183B43"/>
+          <path d="M68.018 19.355V6.999H70.07V8.299C70.896 7.321 72.196 6.747 73.772 6.747C75.623 6.747 77.125 7.547 77.925 9.024C78.851 7.623 80.502 6.747 82.428 6.747C85.43 6.747 87.53 8.849 87.53 12.201V19.355H85.404V12.375C85.404 10.1 84.153 8.748 82.152 8.748C80.176 8.748 78.851 10.171 78.851 12.375V19.355H76.724V12.375C76.724 10.1 75.473 8.748 73.472 8.748C71.496 8.748 70.145 10.171 70.145 12.375V19.355H68.018Z" fill="#183B43"/>
+          <path d="M90.607 12.08H98.462C98.212 10.125 96.711 8.702 94.534 8.702C92.533 8.702 91.007 10.028 90.607 12.08ZM88.406 13.176C88.406 9.574 91.083 6.747 94.559 6.747C98.115 6.747 100.639 9.399 100.639 13.001C100.646 13.302 100.629 13.603 100.588 13.902H90.557C90.832 16.203 92.484 17.654 94.709 17.654C96.436 17.654 97.761 16.778 98.487 15.431L100.238 16.409C99.063 18.411 97.038 19.609 94.709 19.609C91.132 19.609 88.406 16.783 88.406 13.181" fill="#183B43"/>
+          <path d="M112.27 13.176C112.27 10.598 110.444 8.748 107.943 8.748C105.442 8.748 103.616 10.599 103.616 13.176C103.616 15.753 105.442 17.604 107.943 17.604C110.444 17.604 112.269 15.753 112.269 13.176M101.489 13.176C101.489 9.574 104.166 6.747 107.793 6.747C109.644 6.747 111.245 7.523 112.246 8.798V2.398H114.372V19.355H112.321V17.479C111.343 18.805 109.694 19.605 107.793 19.605C104.166 19.605 101.489 16.778 101.489 13.176Z" fill="#183B43"/>
+          <path d="M10.712 4.625C9.705 4.625 8.888 5.441 8.888 6.449C8.888 7.456 9.705 8.273 10.712 8.273C11.72 8.273 12.536 7.456 12.536 6.449C12.535 5.442 11.719 4.626 10.712 4.625Z" fill="#183B43"/>
+          <path d="M10.211 11.531L4.945 17.029C3.684 15.813 2.839 14.231 2.531 12.508C2.472 12.184 2.431 11.858 2.41 11.53L10.211 11.531ZM2.47 9.842C2.975 6.253 5.72 3.391 9.285 2.738C9.788 2.646 10.299 2.6 10.81 2.6C14.995 2.608 18.534 5.697 19.109 9.842H2.47ZM15.295 18.096C12.54 19.836 9.028 19.83 6.279 18.08L10.779 13.382L15.295 18.096ZM19.175 11.531C19.08 13.053 18.571 14.521 17.704 15.776C17.387 16.234 17.027 16.659 16.627 17.046L11.345 11.534L19.175 11.531ZM16.531 2.703C11.949 -0.464 5.668 0.683 2.501 5.265C-0.666 9.847 0.482 16.129 5.064 19.296C9.643 22.461 15.921 21.316 19.09 16.739C22.254 12.155 21.109 5.875 16.531 2.703Z" fill="#183B43"/>
+        </svg>
+      </div>
+
+      <!-- Hero -->
+      <div class="em-hero">
+        <h3>Time to restock, Sarah?</h3>
+        <p class="em-sub">Your HSA already covers this — no new qualification needed.</p>
+      </div>
+
+      <!-- Product card -->
+      <div class="em-product">
+        <div class="em-product-inner">
+          <div class="em-product-img">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="3"/><path d="M8 6h8M8 10h5"/></svg>
+          </div>
+          <div class="em-product-info">
+            <p class="em-brand">Momentous</p>
+            <p class="em-name">Magnesium L-Threonate</p>
+            <p class="em-price">$49.95 / month</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Qualified badge -->
+      <div class="em-qualified">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        <span>Your LMN for <strong style="color:#183B43;">metabolic health</strong> covers this — no new qualification needed.</span>
+      </div>
+
+      <!-- Savings bar chart -->
+      <div class="em-savings">
+        <p class="em-savings-title">How you save with your HSA</p>
+        <div class="em-sbar-row">
+          <div class="em-sbar-label">Out of pocket</div>
+          <div class="em-sbar-track"><div class="em-sbar-fill full">$49.95</div></div>
+          <div class="em-sbar-amount">&nbsp;</div>
+        </div>
+        <div class="em-sbar-row">
+          <div class="em-sbar-label">Brand subscription</div>
+          <div class="em-sbar-track"><div class="em-sbar-fill sub">$42.46</div></div>
+          <div class="em-sbar-amount">save $7</div>
+        </div>
+        <div class="em-sbar-row">
+          <div class="em-sbar-label" style="font-weight:600;color:#183B43;">With your HSA</div>
+          <div class="em-sbar-track"><div class="em-sbar-fill hsa">$33.97</div></div>
+          <div class="em-sbar-amount hsa-amt">save $16</div>
+        </div>
+        <p class="em-savings-note">HSA pre-tax savings at a 32% marginal rate — more than 2x a typical subscription discount.</p>
+      </div>
+
+      <!-- CTA -->
+      <div class="em-cta">
+        <a href="#" class="em-cta-btn">Reorder now &rarr;</a>
+      </div>
+
+      <div class="em-divider"></div>
+
+      <!-- Supply estimate -->
+      <div class="em-supply-note">
+        Based on a typical 30-day supply, your last order was 42 days ago.
+      </div>
+
+      <div class="em-divider"></div>
+
+      <!-- Condition-based discovery -->
+      <div class="em-discover">
+        <p class="em-discover-title">Your metabolic health qualification also covers</p>
+        <div class="em-cat-pills">
+          <a href="#" class="em-cat-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>
+            Supplements
+          </a>
+          <a href="#" class="em-cat-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 3v18"/></svg>
+            Groceries
+          </a>
+          <a href="#" class="em-cat-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            Sleep & Recovery
+          </a>
+          <a href="#" class="em-cat-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Stress & Wellness
+          </a>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="em-footer">
+        <p>Your LMN for metabolic health is valid through March 2027.</p>
+        <p>Questions? <a href="#">Visit our help center</a></p>
+        <p style="margin-top:8px;"><a href="#">Unsubscribe</a> &middot; <a href="#">Manage preferences</a></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Design annotations -->
+  <div class="em-annotation fi">
+    <strong>Savings bar chart</strong><br>
+    The visual bar chart is the core wedge. Brand subscription discount saves ~15%. HSA pre-tax savings at a 32% marginal rate saves ~32%. Only Truemed can make this comparison visible — and it's the single strongest reason to reorder through Truemed instead of going back to the brand.
+  </div>
+  <div class="em-annotation fi">
+    <strong>Condition-based discovery</strong><br>
+    "Your metabolic health qualification also covers..." — category pills, not individual products. This is the Intervention A seed planted inside the Intervention B email. The LMN is condition-scoped, not product-scoped, so the framing expands what the user thinks their HSA covers.
+  </div>
+  <div class="em-annotation fi">
+    <strong>No re-qualification</strong><br>
+    The shield badge makes the friction-remover unmissable. The #1 anxiety for returning users is "do I have to go through that qualification process again?" The answer is no — and we say it three times in the email (subtitle, badge, footer).
+  </div>
+  <div class="em-annotation fi">
+    <strong>Why no strikethrough pricing</strong><br>
+    Previous iterations showed "$HSA Price" vs "$After-Tax Price" with a strikethrough. This implies Truemed offers a discount — it doesn't. The product costs the same. The bar chart makes the mechanic honest: you're paying with pre-tax income, so your effective cost is lower. No fake discounts.
+  </div>
+</section>
+
+<section>
+  <div class="timeline fi">
     <div class="tl-item">
       <div class="tl-label">Test Design · Cohort Holdout</div>
       <h4>~1,660 eligible users · 80/20 split</h4>
@@ -1251,30 +1564,40 @@
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.fi').forEach(el => obs.observe(el));
 
-  // Bar animation: trigger width transition on scroll entry
-  const barObs = new IntersectionObserver((entries) => {
+  // Animated bars: trigger width transition on scroll for funnel, butterfly, channel, LTV bars
+  const animBarObs = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        // stagger bars within same container
-        const bars = e.target.querySelectorAll ? e.target.querySelectorAll('.bar-fill') : [e.target];
-        bars.forEach((b, i) => setTimeout(() => b.classList.add('go'), i * 120));
-        barObs.unobserve(e.target);
+        const bars = e.target.querySelectorAll('.funnel-bar, .bf-bar, .ch-bar-fill, .ltv-bar-inner');
+        bars.forEach((b, i) => setTimeout(() => b.classList.add('go'), i * 100));
+        animBarObs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.3 });
-  document.querySelectorAll('.bars').forEach(el => barObs.observe(el));
+  }, { threshold: 0.2 });
+  document.querySelectorAll('#retentionFunnel, #butterflyChart, #channelDual, #ltvCompare').forEach(el => animBarObs.observe(el));
 
-  // Active nav
+  // Active nav + progress bar — scroll-based for reliability
   const navLinks = document.querySelectorAll('nav a');
-  const sections = document.querySelectorAll('#data, #part1, #part2, #part3, #part4');
-  const navObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
-      }
-    });
-  }, { threshold: 0.25, rootMargin: '-10% 0px -60% 0px' });
-  sections.forEach(s => navObs.observe(s));
+  const navSections = Array.from(document.querySelectorAll('#data, #part1, #part2, #part3, #part4'));
+  const progressBar = document.getElementById('progressBar');
+
+  function onScroll() {
+    // Progress bar
+    const scrolled = window.scrollY;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+
+    // Active nav: find the last section whose top is at or above 40% of viewport height
+    const threshold = window.innerHeight * 0.4;
+    let active = navSections[0];
+    for (const s of navSections) {
+      if (s.getBoundingClientRect().top <= threshold) active = s;
+    }
+    navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + active.id));
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll(); // set initial state
 
   // Smooth scroll
   document.querySelectorAll('nav a[href^="#"]').forEach(a => {
@@ -1282,6 +1605,122 @@
       e.preventDefault();
       const t = document.querySelector(a.getAttribute('href'));
       if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // ═══════ CHART.JS INITIALIZATIONS ═══════
+  const cs = getComputedStyle(document.documentElement);
+  const NEON = '#b9f542', CORAL = '#ff7a62', SKY = '#62d4ff', YELLOW = '#f5d442';
+  const WHITE50 = 'rgba(238,243,239,0.5)', WHITE20 = 'rgba(238,243,239,0.2)', WHITE05 = 'rgba(238,243,239,0.04)';
+
+  Chart.defaults.color = WHITE50;
+  Chart.defaults.borderColor = 'rgba(238,243,239,0.08)';
+  Chart.defaults.font.family = "'Epilogue', sans-serif";
+  Chart.defaults.font.size = 12;
+
+  // Lazy-init charts on scroll
+  const chartInited = {};
+  function initChartOnVisible(canvasId, initFn) {
+    const el = document.getElementById(canvasId);
+    if (!el) return;
+    const cObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !chartInited[canvasId]) {
+          chartInited[canvasId] = true;
+          initFn(el);
+          cObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    cObs.observe(el);
+  }
+
+  // Category Chart — grouped horizontal bar
+  initChartOnVisible('categoryChart', (canvas) => {
+    new Chart(canvas, {
+      type: 'bar',
+      data: {
+        labels: ['Exercise & Fitness', 'Supplements', 'Sleep & Recovery', 'Food & Groceries', 'Light Therapy', 'Stress & Wellness'],
+        datasets: [
+          { label: '1st Purchase', data: [34,22,18,11,8,4], backgroundColor: 'rgba(98,212,255,0.5)', borderColor: SKY, borderWidth: 1, borderRadius: 4 },
+          { label: '2nd Purchase', data: [18,41,12,19,4,4], backgroundColor: 'rgba(185,245,66,0.5)', borderColor: NEON, borderWidth: 1, borderRadius: 4 }
+        ]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { position: 'top', labels: { boxWidth: 12, padding: 20, font: { family: "'Syne', sans-serif", weight: 600, size: 11 } } } },
+        scales: {
+          x: { ticks: { callback: v => v + '%' }, grid: { color: WHITE05 }, max: 50 },
+          y: { grid: { display: false }, ticks: { font: { size: 11 } } }
+        },
+        animation: { duration: 1200, easing: 'easeOutQuart' }
+      }
+    });
+  });
+
+  // Time Between Purchase — bar chart with median annotation
+  initChartOnVisible('timeChart', (canvas) => {
+    new Chart(canvas, {
+      type: 'bar',
+      data: {
+        labels: ['≤7 days', '8–30d', '31–60d', '61–90d', '91–180d', '181–365d'],
+        datasets: [{
+          label: '% of Repeat Purchasers',
+          data: [8, 22, 19, 14, 21, 16],
+          backgroundColor: [
+            'rgba(185,245,66,0.25)', 'rgba(185,245,66,0.45)', 'rgba(185,245,66,0.40)',
+            'rgba(245,212,66,0.35)', 'rgba(98,212,255,0.35)', 'rgba(255,122,98,0.30)'
+          ],
+          borderColor: [NEON, NEON, NEON, YELLOW, SKY, CORAL],
+          borderWidth: 1, borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          annotation: {
+            annotations: {
+              median: {
+                type: 'line', xMin: 2.3, xMax: 2.3,
+                borderColor: YELLOW, borderWidth: 2, borderDash: [6, 4],
+                label: { display: true, content: 'Median: 68d', position: 'start', backgroundColor: 'rgba(245,212,66,0.15)', color: YELLOW, font: { family: "'Syne', sans-serif", weight: 700, size: 10 }, padding: 4 }
+              }
+            }
+          }
+        },
+        scales: {
+          y: { ticks: { callback: v => v + '%' }, grid: { color: WHITE05 }, max: 28 },
+          x: { grid: { display: false } }
+        },
+        animation: { duration: 1000, easing: 'easeOutQuart' }
+      }
+    });
+  });
+
+  // Cross-Category Donut
+  initChartOnVisible('crossCatChart', (canvas) => {
+    new Chart(canvas, {
+      type: 'doughnut',
+      data: {
+        labels: ['Same category (42%)', 'Adjacent category (35%)', 'Unrelated category (23%)'],
+        datasets: [{
+          data: [42, 35, 23],
+          backgroundColor: ['rgba(98,212,255,0.6)', 'rgba(185,245,66,0.6)', 'rgba(245,212,66,0.5)'],
+          borderColor: [SKY, NEON, YELLOW],
+          borderWidth: 2, hoverOffset: 8
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        cutout: '55%',
+        plugins: {
+          legend: { position: 'bottom', labels: { boxWidth: 12, padding: 14, font: { size: 11 } } },
+          tooltip: { callbacks: { label: ctx => ctx.label } }
+        },
+        animation: { animateRotate: true, duration: 1200 }
+      }
     });
   });
 </script>
