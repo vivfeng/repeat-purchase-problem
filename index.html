@@ -72,7 +72,7 @@
     font-family: var(--font-display);
     font-size: clamp(240px, 38vw, 480px);
     font-weight: 800;
-    color: rgba(23,152,149,0.04);
+    color: rgba(23,152,149,0.07);
     line-height: 1;
     right: -3%;
     bottom: -8%;
@@ -455,7 +455,7 @@
   .diag-card .dn {
     font-family: var(--font-display); font-size: 100px; font-weight: 800;
     position: absolute; top: -8px; right: 6px;
-    color: rgba(26,43,47,0.03); line-height: 1; letter-spacing: -5px;
+    color: rgba(23,152,149,0.09); line-height: 1; letter-spacing: -5px;
   }
   .diag-card .db {
     display: inline-block;
@@ -1274,11 +1274,37 @@
   <div class="ib-text">Of repeat buyers crossed into a different category</div>
 </div>
 
+
+<!-- ════════════════════════════════════════════
+     PART 1 — DIAGNOSIS
+     ════════════════════════════════════════════ -->
+<div class="part-divider fi" id="part1">
+  <div class="part-divider-inner">
+    <div class="part-num">01</div>
+    <div class="part-text">
+      <div class="part-label">Part 1</div>
+      <div class="part-title">Diagnose the Repeat Purchase Problem</div>
+    </div>
+  </div>
+</div>
+<p class="part-desc fi">The repeat purchase problem is a three-layer funnel. Each root cause only matters once the previous one is solved. The LMN is the crown jewel — a single qualification unlocks an entire category of HSA-eligible products for ~12 months. Users experience it as a one-time coupon. The opportunity is to reframe it as an ongoing benefit.</p>
+
+<section>
+  <div class="sub-label fi"><span class="dot"></span> Root Causes</div>
+  <h2 class="section-heading fi">Three root causes, ordered by leverage</h2>
+  <p class="section-desc fi">Every Truemed user has already told the company what their health goal is at the moment of qualification. This is the richest first-party preference signal imaginable — collected before the first purchase — and it's currently being wasted.</p>
+  <div class="diag-grid fi">
+    <div class="diag-card"><div class="dn">01</div><div class="db sv">Solvable</div><h3>Users Don't Know What Truemed Is</h3><p>61% of users (25,620 people) came through merchant checkout — a widget on a brand's site. They think Truemed is a payment processor. Merchant-checkout repeat rate: 9%. Direct-to-truemed.com: 22%. Referral (a friend explained it): 31%. The gap is perception, not intent — and there's zero incremental CAC to close it.</p></div>
+    <div class="diag-card"><div class="dn">02</div><div class="db sv">Structural + Solvable</div><h3>No Reason or Urgency to Return</h3><p>60% of first purchases land in durable categories (Exercise 34%, Sleep 18%, Light Therapy 8%) — a structural headwind. But the solvable part is equally large: savings math is invisible (HSA saves 25–35% vs brand subscription's 10–15%), there's no FSA expiration urgency, and no reorder prompt exists at all.</p></div>
+    <div class="diag-card"><div class="dn">03</div><div class="db sv">Mostly Solvable</div><h3>Motivated Users Hit Friction</h3><p>Even users who want to return face real friction: no visibility into what else their LMN covers, re-qualification required across merchants, reimbursement complexity (18% of one-time vs 52% of repeat buyers filed a claim), and external checkout routing. Most of these are product decisions, not structural constraints.</p></div>
+  </div>
+</section>
+
 <!-- User Voices — Journey Map -->
 <section>
   <div class="sub-label fi"><span class="dot"></span> Qualitative: Post-Purchase Journey</div>
   <h2 class="section-heading fi">What users actually said</h2>
-  <p class="section-desc fi">Mapping user quotes to the post-purchase flow reveals where Truemed loses people — and the pattern is consistent: every pain point has a counterexample where the right intervention changed the outcome.</p>
+  <p class="section-desc fi">Mapping user quotes to the post-purchase flow reveals where each root cause hits — and the pattern is consistent: every pain point has a counterexample where the right intervention changed the outcome.</p>
 
   <div class="journey fi">
 
@@ -1347,32 +1373,6 @@
       </div>
     </div>
 
-  </div>
-</section>
-
-
-<!-- ════════════════════════════════════════════
-     PART 1 — DIAGNOSIS
-     ════════════════════════════════════════════ -->
-<div class="part-divider fi" id="part1">
-  <div class="part-divider-inner">
-    <div class="part-num">01</div>
-    <div class="part-text">
-      <div class="part-label">Part 1</div>
-      <div class="part-title">Diagnose the Repeat Purchase Problem</div>
-    </div>
-  </div>
-</div>
-<p class="part-desc fi">The repeat purchase problem is a three-layer funnel. Each root cause only matters once the previous one is solved. The LMN is the crown jewel — a single qualification unlocks an entire category of HSA-eligible products for ~12 months. Users experience it as a one-time coupon. The opportunity is to reframe it as an ongoing benefit.</p>
-
-<section>
-  <div class="sub-label fi"><span class="dot"></span> Root Causes</div>
-  <h2 class="section-heading fi">Three root causes, ordered by leverage</h2>
-  <p class="section-desc fi">Every Truemed user has already told the company what their health goal is at the moment of qualification. This is the richest first-party preference signal imaginable — collected before the first purchase — and it's currently being wasted.</p>
-  <div class="diag-grid fi">
-    <div class="diag-card"><div class="dn">01</div><div class="db sv">Solvable</div><h3>Users Don't Know What Truemed Is</h3><p>61% of users (25,620 people) came through merchant checkout — a widget on a brand's site. They think Truemed is a payment processor. Merchant-checkout repeat rate: 9%. Direct-to-truemed.com: 22%. Referral (a friend explained it): 31%. The gap is perception, not intent — and there's zero incremental CAC to close it.</p></div>
-    <div class="diag-card"><div class="dn">02</div><div class="db sv">Structural + Solvable</div><h3>No Reason or Urgency to Return</h3><p>60% of first purchases land in durable categories (Exercise 34%, Sleep 18%, Light Therapy 8%) — a structural headwind. But the solvable part is equally large: savings math is invisible (HSA saves 25–35% vs brand subscription's 10–15%), there's no FSA expiration urgency, and no reorder prompt exists at all.</p></div>
-    <div class="diag-card"><div class="dn">03</div><div class="db sv">Mostly Solvable</div><h3>Motivated Users Hit Friction</h3><p>Even users who want to return face real friction: no visibility into what else their LMN covers, re-qualification required across merchants, reimbursement complexity (18% of one-time vs 52% of repeat buyers filed a claim), and external checkout routing. Most of these are product decisions, not structural constraints.</p></div>
   </div>
 </section>
 
