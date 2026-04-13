@@ -554,16 +554,18 @@
 
   /* ═══════ RETENTION FUNNEL ═══════ */
   .funnel { margin-bottom: 48px; }
-  .funnel-step { display: flex; align-items: center; gap: 0; margin-bottom: 6px; position: relative; }
-  .funnel-bar-wrap { flex: 1; position: relative; }
+  .funnel-step { margin-bottom: 12px; position: relative; }
+  .funnel-meta { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+  .funnel-meta .fb-val { font-family: var(--font-display); font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+  .funnel-meta .fb-lbl { font-size: 13px; font-weight: 400; color: var(--white-50); }
+  .funnel-bar-wrap { position: relative; }
   .funnel-bar {
-    height: 56px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: space-between; padding: 0 20px;
+    height: 36px; border-radius: var(--radius-sm);
     transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
     width: 0 !important;
+    min-width: 4px;
   }
   .funnel-bar.go { width: var(--fw) !important; }
-  .funnel-bar .fb-val { font-family: var(--font-display); font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
-  .funnel-bar .fb-lbl { font-size: 13px; font-weight: 400; opacity: 0.85; }
   .funnel-bar.f1 { background: linear-gradient(90deg, rgba(23,152,149,0.25), rgba(23,152,149,0.06)); }
   .funnel-bar.f1 .fb-val { color: var(--teal-deep); }
   .funnel-bar.f2 { background: linear-gradient(90deg, rgba(232,167,53,0.25), rgba(232,167,53,0.06)); }
@@ -573,9 +575,8 @@
   .funnel-bar.f4 { background: linear-gradient(90deg, rgba(217,83,79,0.25), rgba(217,83,79,0.06)); }
   .funnel-bar.f4 .fb-val { color: var(--coral); }
   .funnel-drop {
-    position: absolute; right: -80px; top: 50%; transform: translateY(-50%);
-    font-family: var(--font-display); font-size: 11px; font-weight: 700; color: var(--coral);
-    opacity: 0.7; white-space: nowrap;
+    font-family: var(--font-display); font-size: 11px; font-weight: 600; color: var(--coral);
+    margin-top: 4px; opacity: 0.8;
   }
 
   /* ═══════ CHART CONTAINERS ═══════ */
@@ -1005,6 +1006,61 @@
     .calc-results { grid-template-columns: 1fr; }
     .calc-wrap { padding: 24px; }
   }
+  .tldr { max-width:1200px;margin:0 auto;padding:0 64px 60px; }
+  .tldr-inner { background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:48px 48px 40px;position:relative;overflow:hidden; }
+  .tldr-inner::before { content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--teal-mid),var(--teal-light)); }
+  .tldr-eyebrow { font-family:var(--font-display);font-size:10px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--neon);margin-bottom:16px; }
+  .tldr-headline { font-family:var(--font-display);font-size:clamp(20px,2.5vw,28px);font-weight:700;line-height:1.35;margin-bottom:16px;letter-spacing:-0.5px; }
+  .tldr-body { font-size:15px;color:var(--white-80);line-height:1.8;max-width:640px;margin-bottom:32px;font-weight:300; }
+  .tldr-jump { display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px; }
+  .tldr-jump a { display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:var(--radius-sm);background:var(--white-05);border:1px solid var(--border);text-decoration:none;color:var(--white-80);font-family:var(--font-display);font-size:12px;font-weight:600;transition:all .2s; }
+  .tldr-jump a:hover { background:var(--neon-dim);border-color:rgba(23,152,149,0.25);color:var(--teal-mid); }
+  .tldr-jump .tj-num { width:24px;height:24px;border-radius:50%;background:var(--neon-dim);color:var(--teal-mid);display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700; }
+  .coll-section { max-width:1200px;margin:0 auto; }
+  .coll-header { display:flex;align-items:center;justify-content:space-between;padding:20px 64px;cursor:pointer;user-select:none;border-bottom:1px solid var(--border);transition:background .2s; }
+  .coll-header:hover { background:rgba(23,152,149,0.03); }
+  .coll-header-left { display:flex;align-items:center;gap:14px; }
+  .coll-header-left .dot { width:5px;height:5px;border-radius:50%;background:var(--neon);flex-shrink:0; }
+  .coll-header-title { font-family:var(--font-display);font-size:13px;font-weight:600;letter-spacing:0.3px;color:var(--white-80); }
+  .coll-header-stat { font-family:var(--font-display);font-size:12px;font-weight:500;color:var(--white-50);margin-left:12px; }
+  .coll-chevron { width:20px;height:20px;flex-shrink:0;transition:transform .3s ease;color:var(--white-50); }
+  .coll-section.open .coll-chevron { transform:rotate(180deg); }
+  .coll-body { max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(0.4,0,0.2,1); }
+  .coll-section.open .coll-body { max-height:3000px; }
+  .diagnosis-zone { background:linear-gradient(180deg,rgba(23,152,149,0.03) 0%,transparent 100%);border-top:2px solid var(--teal-mid);padding-top:8px; }
+  .part-answers { font-family:var(--font-display);font-size:11px;font-weight:500;letter-spacing:0.5px;color:var(--white-50);margin-top:8px;line-height:1.6; }
+  .nav-item { position:relative; }
+  .nav-dropdown { display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:rgba(255,255,255,0.96);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:12px;padding:8px 4px;padding-top:16px;min-width:180px;box-shadow:0 8px 32px rgba(0,0,0,0.08);z-index:110;margin-top:0; }
+  .nav-dropdown::before { content:'';position:absolute;top:-8px;left:0;right:0;height:16px; }
+  .nav-item:hover .nav-dropdown { display:block; }
+  .nav-dropdown a { display:block;padding:6px 14px;border-radius:6px;font-size:11px;font-weight:500;letter-spacing:0;color:var(--white-50);white-space:nowrap; }
+  .nav-dropdown a:hover { color:var(--white);background:var(--neon-dim); }
+  .nav-dropdown a .sd-tag { display:inline-block;width:16px;text-align:center;font-size:9px;font-weight:700;color:var(--neon);margin-right:4px; }
+  .exp-block { background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin-bottom:16px; }
+  .exp-block-label { font-family:var(--font-display);font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--neon);margin-bottom:10px;display:flex;align-items:center;gap:8px; }
+  .exp-block-label .ebl-dot { width:5px;height:5px;border-radius:50%;background:var(--neon); }
+  .exp-block h4 { font-family:var(--font-display);font-size:18px;font-weight:700;margin-bottom:10px;letter-spacing:-0.3px; }
+  .exp-block p { font-size:14px;color:var(--white-80);line-height:1.75;font-weight:300; }
+  .exp-block.kill-block { border-color:var(--coral);border-left:3px solid var(--coral); }
+  .exp-block.kill-block .exp-block-label { color:var(--coral); }
+  .exp-block.kill-block .ebl-dot { background:var(--coral); }
+  .descope-grid { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px; }
+  .descope-item { display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--white-50);line-height:1.6; }
+  .descope-x { color:var(--coral);font-weight:700;font-size:14px;flex-shrink:0;margin-top:1px; }
+  .math-callout { background:var(--white-05);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px 24px;margin-top:16px; }
+  .math-callout-title { font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--white-50);margin-bottom:12px; }
+  .math-row { display:flex;align-items:center;gap:8px;font-size:13px;color:var(--white-80);line-height:1.8; }
+  .math-row .math-op { color:var(--white-50);font-weight:500;width:14px;text-align:center;flex-shrink:0; }
+  .math-row .math-result { font-weight:600;color:var(--teal-mid); }
+  .math-divider { border:none;height:1px;background:var(--border);margin:6px 0 6px 22px; }
+  @media (max-width:768px) {
+    .tldr { padding:0 24px 40px; }
+    .tldr-inner { padding:32px 24px 28px; }
+    .tldr-jump { grid-template-columns:1fr 1fr; }
+    .coll-header { padding:16px 24px; }
+    .nav-dropdown { display:none !important; }
+    .descope-grid { grid-template-columns:1fr; }
+  }
 </style>
 </head>
 <body>
@@ -1148,17 +1204,21 @@
   <p class="section-desc fi">Of 42,000 purchasers, only 6,300 ever came back. The cliff from first to second purchase is where nearly all value leaks out.</p>
   <div class="funnel fi" id="retentionFunnel">
     <div class="funnel-step">
-      <div class="funnel-bar-wrap"><div class="funnel-bar f1" style="--fw:100%"><span class="fb-val">42,000</span><span class="fb-lbl">Total purchasers</span></div></div>
+      <div class="funnel-meta"><span class="fb-val" style="color:var(--teal-deep)">42,000</span><span class="fb-lbl">Total purchasers</span></div>
+      <div class="funnel-bar-wrap"><div class="funnel-bar f1" style="--fw:100%"></div></div>
     </div>
     <div class="funnel-step">
-      <div class="funnel-bar-wrap"><div class="funnel-bar f2" style="--fw:85%"><span class="fb-val">35,700</span><span class="fb-lbl">1 purchase only (85%)</span></div></div>
+      <div class="funnel-meta"><span class="fb-val" style="color:#b8841e">35,700</span><span class="fb-lbl">1 purchase only (85%)</span></div>
+      <div class="funnel-bar-wrap"><div class="funnel-bar f2" style="--fw:85%"></div></div>
       <div class="funnel-drop">-85% stop here</div>
     </div>
     <div class="funnel-step">
-      <div class="funnel-bar-wrap"><div class="funnel-bar f3" style="--fw:15%"><span class="fb-val">4,200</span><span class="fb-lbl">2 purchases (10%)</span></div></div>
+      <div class="funnel-meta"><span class="fb-val" style="color:var(--sky)">4,200</span><span class="fb-lbl">2 purchases (10%)</span></div>
+      <div class="funnel-bar-wrap"><div class="funnel-bar f3" style="--fw:15%"></div></div>
     </div>
     <div class="funnel-step">
-      <div class="funnel-bar-wrap"><div class="funnel-bar f4" style="--fw:7.5%"><span class="fb-val">2,100</span><span class="fb-lbl">3+ purchases (5%)</span></div></div>
+      <div class="funnel-meta"><span class="fb-val" style="color:var(--coral)">2,100</span><span class="fb-lbl">3+ purchases (5%)</span></div>
+      <div class="funnel-bar-wrap"><div class="funnel-bar f4" style="--fw:7.5%"></div></div>
       <div class="funnel-drop">Only 15% repeat</div>
     </div>
   </div>
@@ -1344,8 +1404,19 @@
   <div class="ib-num">71%</div>
   <div class="ib-text">Repeat buyers opened emails — vs 34% for one-time buyers</div>
 </div>
+  </div>
+</div>
 
-<!-- Time Between Purchases & Cross-Category -->
+<div class="coll-section" id="data-timing">
+  <div class="coll-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="coll-header-left">
+      <span class="dot"></span>
+      <span class="coll-header-title">Purchase Timing & Cross-Category</span>
+      <span class="coll-header-stat">68-day median, 58% cross categories</span>
+    </div>
+    <svg class="coll-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="coll-body">
 <section>
   <div class="sub-label fi"><span class="dot"></span> Purchase Timing & Behavior</div>
   <h2 class="section-heading fi">When and how repeat buyers come back</h2>
@@ -1366,21 +1437,25 @@
   <div class="ib-num">58%</div>
   <div class="ib-text">Of repeat buyers crossed into a different category</div>
 </div>
+  </div>
+</div>
 
 
 <!-- ════════════════════════════════════════════
      PART 1 — DIAGNOSIS
      ════════════════════════════════════════════ -->
+<div class="diagnosis-zone">
 <div class="part-divider fi" id="part1">
   <div class="part-divider-inner">
     <div class="part-num">01</div>
     <div class="part-text">
       <div class="part-label">Part 1</div>
       <div class="part-title">Diagnose the Repeat Purchase Problem</div>
+      <div class="part-answers">Addresses: Root causes of low repeat rate &middot; Highest-leverage segments &middot; Data gaps</div>
     </div>
   </div>
 </div>
-<p class="part-desc fi">The repeat purchase problem is a three-layer funnel. Each root cause only matters once the previous one is solved. The LMN is the crown jewel — a single qualification unlocks an entire category of HSA-eligible products for ~12 months. Users experience it as a one-time coupon. The opportunity is to reframe it as an ongoing benefit.</p>
+<p class="part-desc fi">The repeat purchase problem is a three-layer funnel. Each root cause only matters once the previous one is solved. Users arrive through a narrow funnel — one brand, one product, one transaction — and nothing in the current experience widens it.</p>
 
 <section id="p1-causes">
   <div class="sub-label fi"><span class="dot"></span> Root Causes</div>
@@ -1475,8 +1550,8 @@
   <p class="section-desc fi">Not all 35,700 one-time buyers are equally convertible. Three segments stand out by size, warmth, and fit with what can actually be built.</p>
   <div class="glass-grid fi">
     <div class="glass-card"><div class="gc-v" style="color:var(--coral)">~15,400</div><div class="gc-l"><strong>Merchant-Checkout Durable Buyers</strong><br>Largest cohort. 9% repeat. Perception gap, not intent gap. Zero CAC to reach them.</div></div>
-    <div class="glass-card"><div class="gc-v" style="color:var(--yellow)">~7,100</div><div class="gc-l"><strong>One-Time Buyers Who Took Action</strong><br>Opened email, filed claim, or browsed. Already warm — this is a conversion problem, not awareness.</div></div>
-    <div class="glass-card"><div class="gc-v" style="color:var(--neon)">~7,400</div><div class="gc-l"><strong>Consumable Buyers Who Didn't Repeat</strong><br>Supplements, food. Natural reorder cadence exists. Continuity problem — they went back to the brand directly.</div></div>
+    <div class="glass-card"><div class="gc-v" style="color:var(--yellow)">~6,400–7,800</div><div class="gc-l"><strong>One-Time Buyers Who Took Active Post-Purchase Action</strong><br>Opened email, filed claim, or browsed. Already warm — this is a conversion problem, not awareness.</div></div>
+    <div class="glass-card"><div class="gc-v" style="color:var(--neon)">~6,700–8,100</div><div class="gc-l"><strong>Consumable-Category Buyers Who Didn't Repeat</strong><br>Supplements, food. Natural reorder cadence exists. Continuity problem — they went back to the brand directly.</div></div>
   </div>
 </section>
 
@@ -1521,12 +1596,13 @@
         <tr><td class="cat">Consumable catalog depth</td><td>The reorder flywheel only works if there's enough breadth that Truemed beats going back to the original brand.</td></tr>
         <tr><td class="cat">FSA vs. HSA split and remaining balances</td><td>FSA expiration creates natural urgency that doesn't exist for HSA — if most users are FSA, that changes sequencing.</td></tr>
         <tr><td class="cat">Current post-purchase email sequence</td><td>Before building new lifecycle, I need to know what's already going out and why it has a 34% open rate for one-time buyers.</td></tr>
-        <tr><td class="cat">How consumable buyers currently reorder</td><td>Are they going to Amazon? Back to the merchant? A brand subscription? The answer changes where we intercept them.</td></tr>
+        <tr><td class="cat">How consumable buyers currently reorder</td><td>Are they on brand-direct subscriptions, manual reorders, or have they stopped using the product entirely? This determines whether the reorder email is competing with a subscription (needs savings math) or re-activating a lapsed user (needs product reminder).</td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
+</div><!-- end diagnosis-zone -->
 
 <!-- ════════════════════════════════════════════
      PART 2 — INTERVENTIONS
@@ -1541,7 +1617,7 @@
     </div>
   </div>
 </div>
-<p class="part-desc fi">Each intervention attacks a different root cause. A is table stakes — without awareness, B and C don't get traffic. B is the flywheel bet that compounds over time. C depends on A for traffic but converts the most motivated users.</p>
+<p class="part-desc fi">Each intervention targets a different root cause and a different type of lever: communication (RC1), supply infrastructure (RC2), and product experience (RC3). Each ties back to the merchant-checkout segment as the highest-leverage population. One is a flywheel bet.</p>
 
 <section style="padding-top:32px;padding-bottom:0">
   <div class="sub-label fi"><span class="dot"></span> Dependency Map</div>
@@ -1598,9 +1674,9 @@
       <div class="int-n">B</div>
       <div class="int-header-text"><div class="int-tag fw">Flywheel Bet · Attacks RC2</div><h3>Consumable Reorder Flywheel</h3></div>
     </div>
-    <p class="int-desc">Supplements repeat at 28%. Food at 26%. These users have a natural reorder cadence — they're just going back to Amazon or the original brand because there's no nudge to reorder through Truemed with pre-tax dollars. Three changes: subscription option at merchant checkout, LMN language that recommends subscription for consumables, and a 30–60 day reorder email with a pre-filled checkout link.</p>
+    <p class="int-desc">Supplements repeat at 28%. Food at 26%. These users have a natural reorder cadence — they're just going back to the original brand because there's no nudge to reorder through Truemed with pre-tax dollars. Three changes: surface a subscription option during the initial Truemed checkout for any consumable product, ensure the LMN explicitly recommends ongoing use of the supplement or product, and send a 30–60 day reorder email that links directly to a pre-filled checkout page.</p>
     <div class="int-grid">
-      <div class="int-cell"><div class="ic-l">Merchant Pitch</div><p>"You can charge full price because your customer is paying with pre-tax health dollars instead of after-tax income." Truemed's value prop to merchants is margin preservation, not discounting.</p></div>
+      <div class="int-cell"><div class="ic-l">Merchant Pitch</div><p>"Route your reorders through Truemed and you can charge full price while increasing conversion, because the customer is paying with pre-tax health dollars instead of after-tax income. You stop discounting. We handle the eligibility. Everyone wins."</p></div>
       <div class="int-cell"><div class="ic-l">Primary Metric</div><p>Consumable reorder rate through Truemed within 90 days (current baseline ~15–26% depending on category).</p></div>
       <div class="int-cell"><div class="ic-l">The Flywheel</div><p>More merchants → richer catalog → more users → stronger pitch to next merchant → supply grows. Each signed merchant makes the next one easier to close.</p></div>
       <div class="int-cell"><div class="ic-l">LTV Math</div><p>Supplements: $74 AOV × 3 purchases = $222 LTV, approaching Exercise equipment's $312 one-time. At scale, consumables become the LTV engine of the business.</p></div>
@@ -1643,7 +1719,7 @@
     </div>
     <p class="int-desc">The LMN qualifies a condition, not a product. A "metabolic health" LMN covers an entire HSA-eligible category for ~12 months — but users have zero visibility into this. Two zones: "You're already qualified" (everything the current LMN covers) and "You might also qualify for..." (adjacent conditions). Cross-category browse is currently 8% for one-time buyers vs 47% for repeat buyers — 58% of repeat buyers cross categories.</p>
     <div class="int-grid">
-      <div class="int-cell"><div class="ic-l">Hypothesis</div><p>Making LMN scope visible drives cross-category browse rate meaningfully above the 8% baseline among users who reach the dashboard.</p></div>
+      <div class="int-cell"><div class="ic-l">Hypothesis</div><p>Users who see a personalized, condition-organized dashboard will browse 2+ categories at significantly higher rates than the current 8% baseline for one-time buyers. Users who expand their LMN through the dashboard (adding a new condition qualification) will repeat at rates approaching the 31% referral benchmark, because they've invested in their Truemed profile in a way that mirrors the depth of understanding referral users have.</p></div>
       <div class="int-cell"><div class="ic-l">Primary Metric</div><p>Cross-category browse rate from dashboard entry point.</p></div>
       <div class="int-cell"><div class="ic-l">Dependency</div><p>Requires A to drive traffic. Without the merchant-checkout discovery layer, the dashboard sits empty waiting for users who don't know it exists.</p></div>
       <div class="int-cell"><div class="ic-l">Key Insight</div><p>The LMN as a standing benefit — not a one-time coupon — is the mental model shift that turns a 9% repeat rate into a 31% one. The dashboard makes it visible.</p></div>
@@ -1904,12 +1980,12 @@
     </div>
   </div>
 </div>
-<p class="part-desc fi">The VP of Marketing proposed a 15%-off "win-back" blast to all 35,700 one-time purchasers. Here's how I'd respond — acknowledging the intent while advocating for a better long-term play.</p>
+<p class="part-desc fi">Slack message responding to VP of Marketing.</p>
 
 <section>
   <div class="sub-label fi"><span class="dot"></span> Message to VP Marketing</div>
-  <h2 class="section-heading fi">A different kind of win-back</h2>
-  <p class="section-desc fi">Pushing back on a discount blast without burning the relationship — and proposing a way to test both approaches head-to-head.</p>
+  <h2 class="section-heading fi">Pushback on 15%-off win-back blast</h2>
+  <p class="section-desc fi">The VP of Marketing wants to blast a 15%-off win-back email to all 35,700 one-time purchasers.</p>
 
   <div class="msg-block fi">
     <div class="msg-header">
@@ -1917,12 +1993,15 @@
       <div class="mh-to"><strong>To:</strong> VP of Marketing &nbsp;·&nbsp; <strong>Via:</strong> Slack</div>
     </div>
     <div class="msg-body">
-      <p>Hey — love the instinct to go after these one-time buyers. We're totally aligned that this is the biggest LTV lever we have. 85% one-time, avg 1.19 transactions/user, median 68 days to a second purchase — the window is real and we should be in it.</p>
-      <p>My one concern with a blanket 15%-off blast: the data points to an <em>awareness</em> gap, not a price gap. Our $187 AOV is strong, and when I look at why repeat buyers came back, it's almost always because they learned something — what else their HSA covered, that Truemed was a marketplace, not just a payment widget. A discount risks training 35K users to wait for deals without fixing the underlying reason they didn't return.</p>
-      <p>There's also a repeat quality question. Supplements repeat at 28% and generate $222 LTV over 3 purchases. Exercise equipment does $312 in one shot and almost never repeats. A discount-driven second purchase might just be another durable — we'd be spending margin to win the wrong behavior.</p>
-      <p>What if we ran a 3-cell test for 60 days? Cell 1: your 15% coupon. Cell 2: a personalized "here's what else your LMN already covers" email with no discount, segmented by their first purchase category. Cell 3: holdout. Primary metrics: repeat purchase rate, revenue per user, and repeat category (are they buying consumables or another durable?). If the discount wins cleanly, we scale it. If discovery wins, we have the foundation for a compounding lifecycle program.</p>
-      <p>Either way we learn something instead of betting $187K in margin on a single hypothesis. Want to sync this week to design the cells together?</p>
-      <p class="msg-sig">— Vivian</p>
+      <p>I agree with [VP of Marketing's name] that we should be going after the 35,700 one-time buyer pool and improve repeat purchase rates 💡</p>
+      <p>I do want to flag a concern with sending 15% off to this population, as new customers may expect to receive this in the future to make a subsequent purchase. While this may boost initial repeat purchasing one time, I don't believe it will compound and may teach customers to wait for discounts. 61% of these people came through merchant checkout and many don't even know we have products beyond what they purchased. They think Truemed is a payment processor, not a marketplace. The discount solves a price problem, but the data suggests we have an awareness problem. Users who understand what Truemed actually is repeat at 22% (direct to site) and 31% (referral, where a friend explained the breadth). The gap isn't willingness to buy, it's that nobody ever told them their LMN covers an entire category of products, not just the one thing they purchased.</p>
+      <p>Instead of leading with a discount, we should be making people aware of the 25-35% savings they're already getting by purchasing with HSA pre-tax dollars, which beats any subscription discount or coupon we would send. The opportunity is to reframe the LMN from a one-time coupon into an ongoing benefit they can use across supplements, groceries, sleep, recovery, and more.</p>
+      <p>What I would propose is to split the cohort into three cells 👇</p>
+      <p>Cell one gets the 15% coupon</p>
+      <p>Cell two gets a condition-personalized email based on their LMN qualification: &ldquo;Your metabolic health qualification covers these 47 products across 4 categories, here's what people with your condition are buying.&rdquo; No discount, just discovery.</p>
+      <p>Cell three is a holdout</p>
+      <p>We can run this for 60 days and compare repeat purchase rate, revenue per user, and whether the discount cell shows higher unsubscribe or lower repeat quality over time. If the personalized email performs comparably without the margin hit, we've found something that compounds as we build out the post-purchase lifecycle 🚀</p>
+      <p>What do you think about this?</p>
     </div>
   </div>
 </section>
