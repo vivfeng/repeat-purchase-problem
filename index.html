@@ -1029,11 +1029,47 @@
 
 <!-- ═══════ NAV ═══════ -->
 <nav id="mainNav">
-  <a href="#data"><span class="nav-num">D</span>Data</a>
-  <a href="#part1"><span class="nav-num">1</span>Diagnosis</a>
-  <a href="#part2"><span class="nav-num">2</span>Interventions</a>
-  <a href="#part3"><span class="nav-num">3</span>Experiment</a>
-  <a href="#part4"><span class="nav-num">4</span>Communicate</a>
+  <div class="nav-item">
+    <a href="#data"><span class="nav-num">D</span>Data</a>
+    <div class="nav-dropdown">
+      <a href="#data-cohort"><span class="sd-tag"></span>Cohort Overview</a>
+      <a href="#data-categories"><span class="sd-tag"></span>Categories</a>
+      <a href="#data-channels"><span class="sd-tag"></span>Channels</a>
+      <a href="#data-engagement"><span class="sd-tag"></span>Engagement</a>
+      <a href="#data-timing"><span class="sd-tag"></span>Timing</a>
+    </div>
+  </div>
+  <div class="nav-item">
+    <a href="#part1"><span class="nav-num">1</span>Diagnosis</a>
+    <div class="nav-dropdown">
+      <a href="#p1-causes"><span class="sd-tag"></span>Root Causes</a>
+      <a href="#p1-voices"><span class="sd-tag"></span>User Voices</a>
+      <a href="#p1-segments"><span class="sd-tag"></span>Segments</a>
+      <a href="#p1-gaps"><span class="sd-tag"></span>Data Gaps</a>
+    </div>
+  </div>
+  <div class="nav-item">
+    <a href="#part2"><span class="nav-num">2</span>Interventions</a>
+    <div class="nav-dropdown">
+      <a href="#p2-a"><span class="sd-tag">A</span>Discovery System</a>
+      <a href="#p2-b"><span class="sd-tag">B</span>Reorder Flywheel</a>
+      <a href="#p2-c"><span class="sd-tag">C</span>Benefits Dashboard</a>
+    </div>
+  </div>
+  <div class="nav-item">
+    <a href="#part3"><span class="nav-num">3</span>Experiment</a>
+    <div class="nav-dropdown">
+      <a href="#p3-hypothesis"><span class="sd-tag"></span>Hypothesis</a>
+      <a href="#p3-scope"><span class="sd-tag"></span>Scope & Descoped</a>
+      <a href="#p3-design"><span class="sd-tag"></span>Test Design</a>
+      <a href="#p3-kill"><span class="sd-tag"></span>Kill Criteria</a>
+      <a href="#p3-email"><span class="sd-tag"></span>Email MVP</a>
+      <a href="#p3-scale"><span class="sd-tag"></span>Scale Plan</a>
+    </div>
+  </div>
+  <div class="nav-item">
+    <a href="#part4"><span class="nav-num">4</span>Communicate</a>
+  </div>
 </nav>
 
 <!-- ═══════ HERO ═══════ -->
@@ -1056,6 +1092,21 @@
   <div class="scroll-cue"><div class="line"></div>Scroll</div>
 </header>
 
+<!-- ═══════ TLDR ═══════ -->
+<div class="tldr fi">
+  <div class="tldr-inner">
+    <div class="tldr-eyebrow">Executive Summary</div>
+    <div class="tldr-headline">The 85% one-time rate is an awareness problem disguised as a retention problem.</div>
+    <div class="tldr-body">61% of users arrive through merchant checkout and think Truemed is a payment processor — not a marketplace. They never discover what else their HSA covers. The fix isn't discounts or win-back blasts. It's three layered interventions: close the identity gap (A), build a consumable reorder flywheel that compounds (B), and surface the full benefit through a condition-based dashboard (C).</div>
+    <div class="tldr-jump">
+      <a href="#data"><span class="tj-num">D</span>Data & Evidence</a>
+      <a href="#part1"><span class="tj-num">1</span>Diagnosis</a>
+      <a href="#part2"><span class="tj-num">2</span>Interventions</a>
+      <a href="#part3"><span class="tj-num">3</span>Experiment</a>
+      <a href="#part4"><span class="tj-num">4</span>Communicate</a>
+    </div>
+  </div>
+</div>
 
 <!-- ════════════════════════════════════════════
      DATA & EVIDENCE
@@ -1071,7 +1122,16 @@
 </div>
 <p class="part-desc fi">Synthetic data modeled on real Truemed patterns — cohort metrics, category behavior, channel retention, engagement signals, and user interviews.</p>
 
-<!-- Cohort Overview -->
+<div class="coll-section open" id="data-cohort">
+  <div class="coll-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="coll-header-left">
+      <span class="dot"></span>
+      <span class="coll-header-title">Cohort Overview</span>
+      <span class="coll-header-stat">85% buy once and vanish</span>
+    </div>
+    <svg class="coll-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="coll-body">
 <section>
   <div class="sub-label fi"><span class="dot"></span> Cohort Overview</div>
   <h2 class="section-heading fi">The retention cliff</h2>
@@ -1108,8 +1168,19 @@
   <div class="ib-num">28%</div>
   <div class="ib-text">Supplements repeat rate — 4x higher than fitness equipment</div>
 </div>
+  </div>
+</div>
 
-<!-- Category Breakdown -->
+<div class="coll-section" id="data-categories">
+  <div class="coll-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="coll-header-left">
+      <span class="dot"></span>
+      <span class="coll-header-title">Purchase Categories</span>
+      <span class="coll-header-stat">Consumables repeat 4x more than durables</span>
+    </div>
+    <svg class="coll-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="coll-body">
 <section>
   <div class="sub-label fi"><span class="dot"></span> Purchase Categories</div>
   <h2 class="section-heading fi">Where repeat buyers come from</h2>
@@ -1150,8 +1221,19 @@
   <div class="ib-num">61%</div>
   <div class="ib-text">Arrived via merchant checkout — and almost none came back</div>
 </div>
+  </div>
+</div>
 
-<!-- Acquisition Channels -->
+<div class="coll-section" id="data-channels">
+  <div class="coll-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="coll-header-left">
+      <span class="dot"></span>
+      <span class="coll-header-title">Acquisition Channels</span>
+      <span class="coll-header-stat">61% arrive via merchant checkout, 9% repeat</span>
+    </div>
+    <svg class="coll-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="coll-body">
 <section>
   <div class="sub-label fi"><span class="dot"></span> Acquisition Channels</div>
   <h2 class="section-heading fi">How you arrive determines if you stay</h2>
@@ -1207,8 +1289,19 @@
   <div class="ib-num">3-4x</div>
   <div class="ib-text">Referral and email repeat rates vs. merchant checkout</div>
 </div>
+  </div>
+</div>
 
-<!-- Engagement Signals -->
+<div class="coll-section" id="data-engagement">
+  <div class="coll-header" onclick="this.parentElement.classList.toggle('open')">
+    <div class="coll-header-left">
+      <span class="dot"></span>
+      <span class="coll-header-title">Engagement Signals</span>
+      <span class="coll-header-stat">Repeat buyers 2x more engaged on every metric</span>
+    </div>
+    <svg class="coll-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="coll-body">
 <section>
   <div class="sub-label fi"><span class="dot"></span> Engagement Signals</div>
   <h2 class="section-heading fi">Two entirely different relationships</h2>
@@ -1289,7 +1382,7 @@
 </div>
 <p class="part-desc fi">The repeat purchase problem is a three-layer funnel. Each root cause only matters once the previous one is solved. The LMN is the crown jewel — a single qualification unlocks an entire category of HSA-eligible products for ~12 months. Users experience it as a one-time coupon. The opportunity is to reframe it as an ongoing benefit.</p>
 
-<section>
+<section id="p1-causes">
   <div class="sub-label fi"><span class="dot"></span> Root Causes</div>
   <h2 class="section-heading fi">Three root causes, ordered by leverage</h2>
   <p class="section-desc fi">Every Truemed user has already told the company what their health goal is at the moment of qualification. This is the richest first-party preference signal imaginable — collected before the first purchase — and it's currently being wasted.</p>
@@ -1301,7 +1394,7 @@
 </section>
 
 <!-- User Voices — Journey Map -->
-<section>
+<section id="p1-voices">
   <div class="sub-label fi"><span class="dot"></span> Qualitative: Post-Purchase Journey</div>
   <h2 class="section-heading fi">What users actually said</h2>
   <p class="section-desc fi">Mapping user quotes to the post-purchase flow reveals where each root cause hits — and the pattern is consistent: every pain point has a counterexample where the right intervention changed the outcome.</p>
@@ -1376,7 +1469,7 @@
   </div>
 </section>
 
-<section>
+<section id="p1-segments">
   <div class="sub-label fi"><span class="dot"></span> Highest-Leverage Segments</div>
   <h2 class="section-heading fi">Where to focus first</h2>
   <p class="section-desc fi">Not all 35,700 one-time buyers are equally convertible. Three segments stand out by size, warmth, and fit with what can actually be built.</p>
@@ -1415,7 +1508,7 @@
   </div>
 </section>
 
-<section>
+<section id="p1-gaps">
   <div class="sub-label fi"><span class="dot"></span> What I'd Want to Know Next</div>
   <h2 class="section-heading fi">The data gaps that matter</h2>
   <p class="section-desc fi">Before sizing interventions, six questions would sharpen the prioritization significantly.</p>
@@ -1444,6 +1537,7 @@
     <div class="part-text">
       <div class="part-label">Part 2</div>
       <div class="part-title">Three Retention Interventions</div>
+      <div class="part-answers">Addresses: Intervention design &middot; Hypotheses &middot; Metrics &middot; Trade-offs &middot; Flywheel bet</div>
     </div>
   </div>
 </div>
@@ -1477,7 +1571,7 @@
 </section>
 
 <section>
-  <div class="int-block fi">
+  <div class="int-block fi" id="p2-a">
     <div class="int-header">
       <div class="int-n">A</div>
       <div class="int-header-text"><div class="int-tag cv">Attacks RC1</div><h3>Post-Purchase Discovery System</h3></div>
@@ -1489,9 +1583,17 @@
       <div class="int-cell"><div class="ic-l">Guardrail</div><p>Checkout completion rate — the interstitial must not add friction to the purchase flow. If checkout drops, pull immediately.</p></div>
       <div class="int-cell"><div class="ic-l">Why First</div><p>Scale (6x larger than any other segment), perception gap not intent gap, zero incremental CAC. Table stakes for B and C to have any traffic to convert.</p></div>
     </div>
+    <div class="math-callout">
+      <div class="math-callout-title">The 13-point gap</div>
+      <div class="math-row"><span class="math-op"></span>Merchant-checkout repeat rate: 9%</div>
+      <div class="math-row"><span class="math-op"></span>Direct-to-truemed.com repeat rate: 22%</div>
+      <hr class="math-divider">
+      <div class="math-row"><span class="math-op">=</span><span class="math-result">13-point gap driven by perception, not value</span></div>
+      <div class="math-row"><span class="math-op"></span>25,620 merchant-checkout users &times; 13pt lift = <span class="math-result">~3,330 additional repeat buyers</span></div>
+    </div>
   </div>
 
-  <div class="int-block fi">
+  <div class="int-block fi" id="p2-b">
     <div class="int-header">
       <div class="int-n">B</div>
       <div class="int-header-text"><div class="int-tag fw">Flywheel Bet · Attacks RC2</div><h3>Consumable Reorder Flywheel</h3></div>
@@ -1502,6 +1604,16 @@
       <div class="int-cell"><div class="ic-l">Primary Metric</div><p>Consumable reorder rate through Truemed within 90 days (current baseline ~15–26% depending on category).</p></div>
       <div class="int-cell"><div class="ic-l">The Flywheel</div><p>More merchants → richer catalog → more users → stronger pitch to next merchant → supply grows. Each signed merchant makes the next one easier to close.</p></div>
       <div class="int-cell"><div class="ic-l">LTV Math</div><p>Supplements: $74 AOV × 3 purchases = $222 LTV, approaching Exercise equipment's $312 one-time. At scale, consumables become the LTV engine of the business.</p></div>
+    </div>
+    <div class="math-callout">
+      <div class="math-callout-title">Revenue model — consumable reorder flywheel</div>
+      <div class="math-row"><span class="math-op"></span>Consumable buyers (33% of 42K): ~13,860</div>
+      <div class="math-row"><span class="math-op">&times;</span>Current repeat rate: 27%</div>
+      <div class="math-row"><span class="math-op">=</span>3,742 repeat purchases &times; $74 AOV = <span class="math-result">$277K current repeat revenue</span></div>
+      <hr class="math-divider">
+      <div class="math-row"><span class="math-op"></span>Target repeat rate: 40%</div>
+      <div class="math-row"><span class="math-op">=</span>5,544 repeat purchases &times; $74 AOV = $410K</div>
+      <div class="math-row"><span class="math-op">&Delta;</span><span class="math-result">+$133K incremental annual revenue</span></div>
     </div>
 
     <div class="sub-label fi" style="margin-top:36px"><span class="dot"></span> LTV Crossover</div>
@@ -1524,7 +1636,7 @@
     </div>
   </div>
 
-  <div class="int-block fi">
+  <div class="int-block fi" id="p2-c">
     <div class="int-header">
       <div class="int-n">C</div>
       <div class="int-header-text"><div class="int-tag cv">Attacks RC3 · Depends on A</div><h3>Condition-Based Benefits Dashboard</h3></div>
@@ -1549,34 +1661,69 @@
     <div class="part-text">
       <div class="part-label">Part 3</div>
       <div class="part-title">Design Your Top Experiment</div>
+      <div class="part-answers">Addresses: MVP scope &middot; Descoped items &middot; Test design &middot; Kill criteria &middot; Scale plan</div>
     </div>
   </div>
 </div>
 <p class="part-desc fi">Testing Intervention B — the consumable reorder flywheel. Starting with the cheapest possible version: a single email. The goal is to validate the savings-math framing before building subscription infrastructure.</p>
 
-<section style="padding-top:32px;padding-bottom:0">
-  <div class="sub-label fi"><span class="dot"></span> Experiment at a Glance</div>
+<!-- Hypothesis & Goal -->
+<section id="p3-hypothesis" style="padding-bottom:0">
+  <div class="exp-block fi">
+    <div class="exp-block-label"><span class="ebl-dot"></span> Hypothesis & Goal</div>
+    <h4>Savings-math framing will lift consumable reorder rate by 7+ points</h4>
+    <p>Lapsed consumable buyers (supplements + food) have a natural reorder cadence but are going back to the brand directly — often with a 10-15% subscription discount. We believe showing the HSA pre-tax savings wedge (25-35% effective discount) alongside the "your LMN already covers this" message will pull reorders back through Truemed. If validated, this becomes the foundation for subscription infrastructure investment.</p>
+  </div>
+</section>
+
+<!-- Scope & Descoped -->
+<section id="p3-scope" style="padding-top:24px;padding-bottom:0">
+  <div class="exp-block fi">
+    <div class="exp-block-label"><span class="ebl-dot"></span> What Ships in 2 Weeks</div>
+    <h4>Single reorder nudge email — no new infrastructure</h4>
+    <p>One email to lapsed consumable buyers (supplements + food) from the back-catalog. Contains: savings comparison (full price vs brand subscription 10-15% vs Truemed HSA 25-35%), "Your LMN already covers this," and a lightweight cross-category discovery section. No ML, no subscription rails — just copy and a pre-filled checkout link.</p>
+  </div>
+  <div class="exp-block fi" style="margin-top:12px">
+    <div class="exp-block-label"><span class="ebl-dot"></span> Explicitly Descoped from V1</div>
+    <div class="descope-grid">
+      <div class="descope-item"><span class="descope-x">&times;</span>Subscription infrastructure at checkout</div>
+      <div class="descope-item"><span class="descope-x">&times;</span>ML-powered product recommendations</div>
+      <div class="descope-item"><span class="descope-x">&times;</span>LMN template language changes</div>
+      <div class="descope-item"><span class="descope-x">&times;</span>Multi-variant email personalization</div>
+      <div class="descope-item"><span class="descope-x">&times;</span>Merchant-side integration work</div>
+      <div class="descope-item"><span class="descope-x">&times;</span>New user onboarding flow changes</div>
+    </div>
+  </div>
+</section>
+
+<!-- Test Design -->
+<section id="p3-design" style="padding-top:24px;padding-bottom:0">
+  <div class="sub-label fi"><span class="dot"></span> Test Design</div>
   <div class="exp-info fi">
     <div class="exp-card"><div class="ec-v" style="color:var(--neon)">1,660</div><div class="ec-l">Eligible users<br>(lapsed consumable buyers)</div></div>
     <div class="exp-card"><div class="ec-v" style="color:var(--sky)">80/20</div><div class="ec-l">Treatment / Holdout<br>(1,330 vs 330)</div></div>
     <div class="exp-card"><div class="ec-v" style="color:var(--yellow)">~15%</div><div class="ec-l">Baseline reorder rate<br>(filtered cohort)</div></div>
     <div class="exp-card"><div class="ec-v" style="color:var(--coral)">7 pts</div><div class="ec-l">Min detectable effect<br>(15% → 22%, 80% power)</div></div>
     <div class="exp-card"><div class="ec-v" style="color:var(--white-80)">60d</div><div class="ec-l">Observation window<br>(grocery: 3-4 wk, supps: 4-8 wk)</div></div>
-    <div class="exp-card"><div class="ec-v" style="color:var(--coral)">&lt;5 pts</div><div class="ec-l">Kill threshold<br>(lift OR &lt;5% email CTR)</div></div>
+  </div>
+  <div class="exp-block fi" style="margin-top:12px">
+    <div class="exp-block-label"><span class="ebl-dot"></span> Why Cohort Holdout (Not A/B)</div>
+    <p>~1,330 treatment, ~330 holdout. With only 1,660 eligible users, a standard 50/50 A/B test would lack statistical power. The 80/20 cohort holdout maximizes learning velocity while maintaining a clean baseline. Grocery results readable at weeks 3-4. Supplement results at weeks 4-8 given longer reorder cadence.</p>
   </div>
 </section>
 
-<section>
-  <div class="timeline fi">
-    <div class="tl-item">
-      <div class="tl-label">Week 1 · MVP</div>
-      <h4>Single reorder nudge email — no new infrastructure</h4>
-      <p>One email to lapsed consumable buyers (supplements + food) from the back-catalog. Contains: savings comparison (full price vs brand subscription 10-15% vs Truemed HSA 25-35%), "Your LMN already covers this," and a lightweight cross-category discovery section. No ML, no subscription rails — just copy and a pre-filled checkout link.</p>
-    </div>
+<!-- Kill Criteria -->
+<section id="p3-kill" style="padding-top:24px;padding-bottom:0">
+  <div class="exp-block kill-block fi">
+    <div class="exp-block-label"><span class="ebl-dot"></span> Kill Criteria — Defined Upfront</div>
+    <h4>No post-hoc rationalization</h4>
+    <p><strong>Kill if:</strong> &lt;5-point lift in reorder rate OR &lt;5% email CTR after 60 days.</p>
+    <p style="margin-top:8px"><strong>If killed:</strong> The insight is that savings framing alone isn't enough — reconsider whether the friction is awareness or catalog depth. Pivot to testing Intervention A (discovery system) as the prerequisite.</p>
+    <p style="margin-top:8px"><strong>If signal but below MDE:</strong> Extend observation window to 90 days before calling it. Consumable reorder cadences vary widely.</p>
   </div>
 </section>
 
-<section>
+<section id="p3-email">
   <div class="sub-label fi"><span class="dot"></span> The MVP Email</div>
   <h2 class="section-heading fi">What it looks like in the inbox</h2>
   <p class="section-desc fi">A single email — the only new build. Everything else (merchant product pages, Truemed checkout, LMN qualification) already exists. The visual bar chart makes the HSA savings wedge impossible to miss.</p>
@@ -1727,18 +1874,10 @@
   </div>
 </section>
 
-<section>
+<section id="p3-scale">
+  <div class="sub-label fi"><span class="dot"></span> Scale Plan</div>
+  <h2 class="section-heading fi" style="font-size:clamp(22px,2.5vw,32px)">If results are positive: V1 → V2 → V3</h2>
   <div class="timeline fi">
-    <div class="tl-item">
-      <div class="tl-label">Test Design · Cohort Holdout</div>
-      <h4>~1,660 eligible users · 80/20 split</h4>
-      <p>~1,330 treatment, ~330 holdout. Baseline reorder rate ~15%. MDE: 7-point lift (enough to justify subscription infrastructure investment). Grocery results readable at weeks 3–4. Supplement results at weeks 4–8 given longer reorder cadence.</p>
-    </div>
-    <div class="tl-item">
-      <div class="tl-label">Day 60 · Kill Criteria</div>
-      <h4>Defined upfront, no post-hoc rationalization</h4>
-      <p>Kill if: &lt;5-point lift in reorder rate OR &lt;5% email CTR after 60 days. If killed, the insight is that savings framing alone isn't enough — reconsider whether the friction is awareness or catalog depth.</p>
-    </div>
     <div class="tl-item">
       <div class="tl-label">V2 · Scale</div>
       <h4>Subscription infrastructure + LMN template language</h4>
@@ -1822,7 +1961,7 @@
   document.querySelectorAll('#retentionFunnel, #butterflyChart, #channelDual, #ltvCompare').forEach(el => animBarObs.observe(el));
 
   // Active nav + progress bar — scroll-based for reliability
-  const navLinks = document.querySelectorAll('nav a');
+  const navLinks = document.querySelectorAll('nav > .nav-item > a');
   const navSections = Array.from(document.querySelectorAll('#data, #part1, #part2, #part3, #part4'));
   const progressBar = document.getElementById('progressBar');
 
@@ -1844,12 +1983,18 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll(); // set initial state
 
-  // Smooth scroll
+  // Smooth scroll for all nav links (main + dropdown)
   document.querySelectorAll('nav a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
-      const t = document.querySelector(a.getAttribute('href'));
-      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const href = a.getAttribute('href');
+      const t = document.querySelector(href);
+      if (t) {
+        // If target is inside a collapsed section, open it first
+        const coll = t.closest('.coll-section');
+        if (coll && !coll.classList.contains('open')) coll.classList.add('open');
+        t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
   });
 
