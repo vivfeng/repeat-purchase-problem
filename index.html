@@ -515,7 +515,8 @@
   /* ═══════ UX JOURNEY FLOW ═══════ */
   .ux-journey {
     display: flex; align-items: stretch; margin: 24px 0 28px; gap: 0;
-    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    overflow-x: auto; overflow-y: visible; -webkit-overflow-scrolling: touch;
+    padding-top: 12px;
   }
   .ux-node {
     flex: 1; min-width: 100px; padding: 14px 16px; background: #fff;
@@ -802,12 +803,24 @@
 
   /* ═══════ FLOW DIAGRAM ═══════ */
   .flow-diagram {
-    display: flex; align-items: center; justify-content: center; gap: 0;
-    margin-bottom: 48px; flex-wrap: wrap; padding: 32px 0;
+    display: flex; flex-direction: column; align-items: center; gap: 0;
+    margin-bottom: 48px; padding: 32px 0;
   }
+  .flow-funnel-step {
+    display: flex; align-items: center; gap: 20px; width: 100%;
+  }
+  .flow-funnel-step .flow-node {
+    flex: 1;
+  }
+  .flow-funnel-step .flow-funnel-bar {
+    height: 4px; border-radius: 2px; background: linear-gradient(90deg, var(--teal-mid), rgba(23,152,149,0.1));
+  }
+  .flow-funnel-step:nth-child(1) { max-width: 100%; }
+  .flow-funnel-step:nth-child(3) { max-width: 80%; }
+  .flow-funnel-step:nth-child(5) { max-width: 60%; }
   .flow-node {
     background: #ffffff; border: 1px solid var(--border); border-radius: var(--radius-sm);
-    padding: 16px 20px; text-align: center; min-width: 140px;
+    padding: 16px 20px; text-align: center;
     transition: border-color .3s, transform .3s;
   }
   .flow-node:hover { border-color: var(--teal-mid); transform: translateY(-3px); }
@@ -820,15 +833,13 @@
   .flow-node .fn-name { font-family: var(--font-display); font-size: 11px; font-weight: 600; letter-spacing: 1px; }
   .flow-node .fn-rc { font-size: 10px; color: var(--white-50); margin-top: 4px; }
   .flow-arrow {
-    font-size: 24px; color: var(--neon); opacity: 0.5; padding: 0 12px;
+    font-size: 20px; color: var(--neon); opacity: 0.5; padding: 8px 0;
     font-family: var(--font-display); font-weight: 300;
   }
-  .flow-parallel {
-    display: flex; flex-direction: column; align-items: center; gap: 8px;
-  }
-  .flow-parallel-label {
-    font-family: var(--font-display); font-size: 9px; font-weight: 600;
+  .flow-funnel-label {
+    font-family: var(--font-display); font-size: 9px; font-weight: 700;
     letter-spacing: 2px; text-transform: uppercase; color: var(--white-50);
+    text-align: right; min-width: 100px; flex-shrink: 0;
   }
 
   /* ═══════ EXPERIMENT INFOGRAPHIC ═══════ */
@@ -1770,27 +1781,29 @@
 <p class="part-desc fi">Each intervention targets a different root cause and a different type of lever: communication (RC1), supply infrastructure (RC2), and product experience (RC3). Each ties back to the merchant-checkout segment as the highest-leverage population. One is a flywheel bet.</p>
 
 <section style="padding-top:32px;padding-bottom:0">
-  <div class="sub-label fi"><span class="dot"></span> Dependency Map</div>
+  <div class="sub-label fi"><span class="dot"></span> Intervention Funnel</div>
   <div class="flow-diagram fi">
-    <div class="flow-node">
-      <div class="fn-letter">A</div>
-      <div class="fn-name">Discovery System</div>
-      <div class="fn-rc">Attacks RC1 · Awareness</div>
+    <div class="flow-funnel-step">
+      <div class="flow-node">
+        <div class="fn-letter">A</div>
+        <div class="fn-name">Post-Purchase Discovery System</div>
+        <div class="fn-rc">RC1 &middot; Customers don't know what Truemed is</div>
+      </div>
     </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-node">
-      <div class="fn-letter">C</div>
-      <div class="fn-name">Benefits Dashboard</div>
-      <div class="fn-rc">Attacks RC3 · Depends on A</div>
+    <div class="flow-arrow">&#8595;</div>
+    <div class="flow-funnel-step">
+      <div class="flow-node">
+        <div class="fn-letter">B</div>
+        <div class="fn-name">Consumable Reorder Flywheel</div>
+        <div class="fn-rc">RC2 &middot; No reason or urgency to return</div>
+      </div>
     </div>
-    <div style="width:100%;display:flex;justify-content:center;margin-top:16px">
-      <div class="flow-parallel">
-        <div class="flow-parallel-label">Ships in parallel</div>
-        <div class="flow-node">
-          <div class="fn-letter">B</div>
-          <div class="fn-name">Consumable Reorder</div>
-          <div class="fn-rc">Attacks RC2 · Flywheel</div>
-        </div>
+    <div class="flow-arrow">&#8595;</div>
+    <div class="flow-funnel-step">
+      <div class="flow-node">
+        <div class="fn-letter">C</div>
+        <div class="fn-name">Condition-Based Benefits Dashboard</div>
+        <div class="fn-rc">RC3 &middot; Motivated customers hit friction &middot; Depends on A</div>
       </div>
     </div>
   </div>
