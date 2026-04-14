@@ -518,7 +518,7 @@
     overflow-x: auto; -webkit-overflow-scrolling: touch;
   }
   .ux-node {
-    flex: 1; min-width: 0; padding: 12px 14px; background: #fff;
+    flex: 1; min-width: 100px; padding: 14px 16px; background: #fff;
     border: 1px solid var(--border); text-align: center; position: relative; border-right: none;
   }
   .ux-node:first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
@@ -526,12 +526,12 @@
   .ux-node.new { background: var(--neon-dim); border-color: rgba(23,152,149,0.2); }
   .ux-node.new + .ux-node { border-left-color: rgba(23,152,149,0.2); }
   .ux-node-num {
-    font-family: var(--font-display); font-size: 9px; font-weight: 700;
-    color: var(--white-20); margin-bottom: 4px;
+    font-family: var(--font-display); font-size: 10px; font-weight: 700;
+    color: var(--white-50); margin-bottom: 4px;
   }
   .ux-node.new .ux-node-num { color: var(--teal-mid); }
   .ux-node-label {
-    font-family: var(--font-display); font-size: 10px; font-weight: 600;
+    font-family: var(--font-display); font-size: 11px; font-weight: 600;
     color: var(--ink); line-height: 1.3;
   }
   .ux-node.new .ux-node-label { color: var(--teal-deep); }
@@ -553,6 +553,7 @@
   .mockup-frame {
     flex: 0 0 260px; border: 1px solid var(--border); border-radius: 12px;
     overflow: hidden; background: #fff; box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+    display: flex; flex-direction: column;
   }
   .mockup-frame.wide { flex: 0 0 340px; }
   .mockup-bar {
@@ -565,7 +566,7 @@
     font-family: var(--font-display); font-size: 9px; font-weight: 600;
     color: var(--white-50); margin-left: 6px;
   }
-  .mockup-body { padding: 16px; }
+  .mockup-body { padding: 16px; flex: 1; }
   .mockup-h {
     font-family: var(--font-display); font-size: 13px; font-weight: 700;
     color: var(--ink); margin-bottom: 6px; line-height: 1.3;
@@ -638,7 +639,8 @@
   .mockup-item-row:last-child { border-bottom: none; font-weight: 600; }
   .mockup-caption {
     font-family: var(--font-display); font-size: 9px; font-weight: 600;
-    color: var(--white-50); text-align: center; margin-top: 8px;
+    color: var(--white-50); text-align: center; padding: 10px 12px;
+    border-top: 1px solid var(--border); margin-top: auto;
   }
 
   @media (max-width: 768px) {
@@ -1822,7 +1824,7 @@
           <div class="mockup-body">
             <div class="mockup-check-icon">&#10003;</div>
             <div class="mockup-h">You're qualified!</div>
-            <div class="mockup-p">Your HSA also covers 100+ merchants across popular categories like:</div>
+            <div class="mockup-p">Your LMN condition has qualified others for the following categories and products:</div>
             <div class="mockup-pills">
               <span class="mockup-pill t">Supplements</span>
               <span class="mockup-pill s">Healthy Food</span>
@@ -1844,7 +1846,7 @@
             <div class="mockup-p">Your AG1 order has shipped and will arrive in 3-5 business days.</div>
             <hr class="mockup-divider">
             <div class="mockup-section-head">Did you know?</div>
-            <div class="mockup-p">Your HSA also covers 100+ merchants across popular categories like:</div>
+            <div class="mockup-p">Your LMN condition has qualified others for the following categories and products:</div>
             <div class="mockup-pills">
               <span class="mockup-pill t">Supplements</span>
               <span class="mockup-pill s">Healthy Food</span>
@@ -1867,7 +1869,7 @@
             <div class="mockup-p">Your AG1 purchase has been processed for HSA reimbursement.</div>
             <hr class="mockup-divider">
             <div class="mockup-section-head">Save more with your qualification</div>
-            <div class="mockup-p">Your HSA covers 100+ merchants across popular categories like:</div>
+            <div class="mockup-p">Your LMN condition has qualified others for the following categories and products:</div>
             <div class="mockup-pills">
               <span class="mockup-pill t">Supplements</span>
               <span class="mockup-pill s">Healthy Food</span>
@@ -2027,6 +2029,20 @@
     <div class="mockup-section fi">
       <div class="mockup-section-label">What the customer sees</div>
       <div class="mockup-row">
+
+        <!-- Consent modal mockup -->
+        <div class="mockup-frame">
+          <div class="mockup-bar"><div class="mockup-bar-dots"><span></span><span></span><span></span></div><div class="mockup-bar-title">truemed.com</div></div>
+          <div class="mockup-body" style="display:flex;flex-direction:column;align-items:center;text-align:center;">
+            <div class="mockup-check-icon" style="margin:4px auto 10px">&#128274;</div>
+            <div class="mockup-h">Personalize your benefits</div>
+            <div class="mockup-p">We can use your LMN qualification to show you customized product recommendations and savings insights tailored to your condition.</div>
+            <div class="mockup-p" style="font-size:9px;color:var(--ink);background:var(--neon-dim);padding:8px 10px;border-radius:6px;margin-bottom:12px;text-align:left;line-height:1.5">I consent to Truemed using my LMN data to provide customized insights and product recommendations based on my qualified conditions.</div>
+            <div class="mockup-btn-m pri">Yes, personalize my experience</div>
+            <div class="mockup-btn-m sec">No thanks, maybe later</div>
+          </div>
+          <div class="mockup-caption">Consent modal on login for repeat customers</div>
+        </div>
 
         <!-- Dashboard mockup -->
         <div class="mockup-frame wide">
